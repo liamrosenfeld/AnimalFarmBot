@@ -11,7 +11,7 @@ def buildMiddleOfSign(message: str):
     inputArr = message.split()
 
     if not inputArr:
-        return '| no message given |'
+        inputArr = ["no", "message", "given"]
 
     lines = []
     line = ""
@@ -19,16 +19,21 @@ def buildMiddleOfSign(message: str):
         if (len(word) > (MAX_SIGN_WIDTH - 3)):
             lines = ["One of your", "words are", "too long"]
             break
-    
-        if len(line) + len(word) > MAX_SIGN_WIDTH - 3:
-            lines.append(line)
-            line = word
-        else:
-            if line == "":
+
+        if "```" not in word:
+            if len(line) + len(word) > MAX_SIGN_WIDTH - 3:
+                lines.append(line)
                 line = word
             else:
-                line += " " + word
-            
+                if line == "":
+                    line = word
+                else:
+                    line += " " + word
+        else:
+            line = ""
+            lines = ["triple", "backtick", "is not", "allowed"]
+            break
+        
     if line != "":
         lines.append(line)
     lines = map(buildLine, lines)
