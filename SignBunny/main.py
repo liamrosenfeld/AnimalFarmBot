@@ -1,7 +1,6 @@
 import sys
 import os
 import discord
-import KeepAlive
 import BunnyBuilder
 
 client = discord.Client()
@@ -27,7 +26,5 @@ def sendHelp():
     message = "Write a message after `!bunny` to put it in a sign "
     return message
 
-KeepAlive.keepAlive()
 token = os.environ.get("DISCORD_BOT_SECRET")
 client.run(token)
-sys.stdout.flush()
