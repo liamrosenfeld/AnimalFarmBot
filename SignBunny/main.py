@@ -13,7 +13,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.author != client.user:
-        if message.content.startswith("!bunnyhelp"):
+        if message.content.startswith("!help"):
             await message.channel.send(sendHelp())
         elif message.content.startswith("!bunny"):
             await message.channel.send(generateBunny(message.content[6::]))   
@@ -25,7 +25,11 @@ def generateBunny(message: str):
     return bunny
 
 def sendHelp():
-    message = "Write a message after `!bunny` to put it in a sign "
+    message = """
+                `!bunny <message>` -> Put that message in a sign
+                `!ping`            -> Ping the bot
+                `!help`            -> Bring up this help menu
+            """
     return message
 
 token = os.environ.get("DISCORD_BOT_SECRET")
