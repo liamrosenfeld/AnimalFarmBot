@@ -14,6 +14,10 @@ def buildMiddleOfSign(message: str):
         inputArr = ["no", "message", "given"]
 
     lines = []
+    if message == "bunny":
+        lines = ["(__/)", "(•ㅅ•)", "/ 　 づ"]
+        inputArr = []
+
     line = ""
     for word in inputArr:
         if (len(word) > (MAX_SIGN_WIDTH - 3)):
