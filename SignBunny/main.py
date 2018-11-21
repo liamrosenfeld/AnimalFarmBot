@@ -17,6 +17,8 @@ async def on_message(message):
             await message.channel.send(sendHelp())
         elif message.content.startswith("!bunny"):
             await message.channel.send(generateBunny(message.content[6::]))   
+        elif message.content.startswith("!ping"):
+            await message.channel.send(generateBunny("🏓 Pong!"));
 
 def generateBunny(message: str):
     bunny = f"```{BunnyBuilder.buildSign(message)}```"
