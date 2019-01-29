@@ -1,1 +1,0 @@
-worker: pipenv run python3 SignBunny/main.py
