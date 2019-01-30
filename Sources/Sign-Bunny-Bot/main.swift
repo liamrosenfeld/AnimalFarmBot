@@ -24,7 +24,19 @@ let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shield
 
 bot.editStatus(to: "online", playing: "Being Upgraded to V2!")
 
-bot.register("ping", message: BunnyBuilder.buildSignBunny(with: String("Pong!")))
+bot.register("ping", message: BunnyBuilder.buildSignBunny(with: String("🏓 Pong!")))
+
+bot.register("info", message: """
+                            <> with ❤ By Liam Rosenfeld.
+                            Check Out The Source Code Here: https://github.com/liamrosenfeld/Sign-Bunny-Bot
+                            """)
+
+bot.register("help", message: """
+                            `!bunny <message>` -> Put that message in a sign
+                            `!ping` -> Ping the bot
+                            `!help` -> Bring up this help menu
+                            `!info` -> Show Credits and Link to Source Code
+                            """)
 
 bot.register("bunny") { msg, args in
     let content = args.joined(separator: " ")
