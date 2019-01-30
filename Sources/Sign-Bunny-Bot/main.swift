@@ -9,28 +9,27 @@
 import Foundation
 import Sword
 
-guard let botKey = ProcessInfo.processInfo.environment["DISCORD_BOT_SECRET"] else {
+guard let token = ProcessInfo.processInfo.environment["DISCORD_BOT_SECRET"] else {
     fatalError("No Secret Key Provided")
 }
 
-let bot = Sword(token: botKey)
+let swordOptions = SwordOptions()
+
+let shieldOptions = ShieldOptions(
+    prefixes: ["!"],
+    willIgnoreBots: true
+)
+
+let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
 
 bot.editStatus(to: "online", playing: "Being Upgraded to V2!")
 
-bot.on(.messageCreate) { data in
-    let msg = data as! Message
-    
-    if !msg.content.hasPrefix("!") {
-        return
-    }
-    
-    if msg.content.starts(with: "!ping")  {
-        msg.reply(with: "Pong!")
-    } else if msg.content.starts(with: "!bunny") {
-        let messageStart = msg.content.index(msg.content.startIndex, offsetBy: 6)
-        let message = msg.content[messageStart...]
-        msg.reply(with: BunnyBuilder.buildSignBunny(with: String(message)))
-    }
+bot.register("ping", message: BunnyBuilder.buildSignBunny(with: String("Pong!")))
+
+bot.register("bunny") { msg, args in
+    let content = args.joined(separator: " ")
+    let bunny = BunnyBuilder.buildSignBunny(with: String(content))
+    msg.reply(with: bunny)
 }
 
 bot.connect()

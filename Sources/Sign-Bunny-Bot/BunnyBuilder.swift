@@ -35,6 +35,7 @@ struct BunnyBuilder {
         
         if message == "bunny" {
             lines = ["(__/)", "(•ㅅ•)", "/ 　 づ"]
+            inputArr.removeAll()
         }
         
         for word in inputArr {
