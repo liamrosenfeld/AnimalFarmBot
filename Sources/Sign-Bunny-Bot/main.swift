@@ -3,7 +3,7 @@
 //  Sign Bunny Bot
 //
 //  Created by Liam Rosenfeld on 1/28/19.
-//  Copyright © 2018 Liam Rosenfeld. All rights reserved.
+//  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation
@@ -24,7 +24,7 @@ let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shield
 
 bot.editStatus(to: "online", playing: "Being Upgraded to V2!")
 
-bot.register("ping", message: BunnyBuilder.buildSignBunny(with: String("🏓 Pong!")))
+bot.register("ping", message: BunnyBuilder.build(with: ["🏓 Pong!"]))
 
 bot.register("info", message: """
                             <> with ❤ By Liam Rosenfeld.
@@ -39,8 +39,7 @@ bot.register("help", message: """
                             """)
 
 bot.register("bunny") { msg, args in
-    let content = args.joined(separator: " ")
-    let bunny = BunnyBuilder.buildSignBunny(with: String(content))
+    let bunny = BunnyBuilder.build(with: args)
     msg.reply(with: bunny)
 }
 
