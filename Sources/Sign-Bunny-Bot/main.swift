@@ -22,7 +22,7 @@ let shieldOptions = ShieldOptions(
 
 let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
 
-bot.editStatus(to: "online", playing: "Being Upgraded to V2!")
+bot.editStatus(to: "online", playing: "Version 2 Test (So Be Nice) ;)")
 
 bot.register("ping", message: BunnyBuilder.build(with: ["🏓 Pong!"]))
 

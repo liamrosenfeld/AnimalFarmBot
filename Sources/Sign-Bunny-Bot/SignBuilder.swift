@@ -43,9 +43,8 @@ struct SignBuilder {
     func buildMiddle(with message: [String]) -> String {
         var lines = [String]()
         
+        var line = ""
         for word in message {
-            var line = ""
-            
             if word.contains("```") {
                 continue
             }
@@ -58,10 +57,9 @@ struct SignBuilder {
             } else {
                 line += " " + word
             }
-            
-            if line != "" {
-                lines.append(line)
-            }
+        }
+        if line != "" {
+            lines.append(line)
         }
         
         lines = lines.map(buildLine)
