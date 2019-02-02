@@ -1,6 +1,6 @@
 //
 //  Main.swift
-//  Sign Bunny Bot
+//  AnimalFarm
 //
 //  Created by Liam Rosenfeld on 1/28/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Animal.swift
-//  Sign-Bunny-Bot
+//  AnimalFarm
 //
 //  Created by Liam on 1/30/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.

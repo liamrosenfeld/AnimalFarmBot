@@ -1,6 +1,6 @@
 //
 //  Shield+AddCommands.swift
-//  Sign-Bunny-Bot
+//  AnimalFarm
 //
 //  Created by Liam on 2/1/19.
 //
@@ -18,7 +18,7 @@ extension Shield {
         
         self.register("info", message: """
                             <> with ❤ By Liam Rosenfeld.
-                            Check Out The Source Code Here: https://github.com/liamrosenfeld/Sign-Bunny-Bot
+                            Check Out The Source Code Here: https://github.com/liamrosenfeld/AnimalFarmBot
                             """)
         
         self.register("help", message: """

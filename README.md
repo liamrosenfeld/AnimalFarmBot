@@ -1,18 +1,70 @@
-# Sign-Bunny-Bot
+# Animal Farm
 
-A bot that generates a custom sign bunny whenever requested. All that you need to do is write `!bunny <message>` in a server where the bot is enabled and it generates something like:
+A Discord bot that generates a custom sign bunny whenever requested. All that you need to do is send `!<animal> <message>`.
+
+## Commands
+
+`!<animal> <message>` -> animal says the message  
+`!animal` -> Lists supported animals  
+`!ping` -> Ping the bot  
+`!help` -> Bring up this help menu  
+`!info` -> Show Credits and Link to Source Code  
+
+## Examples
+
+**!bunny I Love Sign Bunnies!**
 
 ```text
 |-------------|
-| THE QUICK   |
-| BROWN FOX   |
-| JUMPED OVER |
-| THE LAZY    |
-| DOG         |
+| I LOVE SIGN |
+| BUNNIES!    |
 |-------------|
 (\__/) ||
 (•ㅅ•) ||
 / 　 づ
 ```
 
-Add it to a sever [here](https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267)
+**!dino rawr**
+
+```text
+|-------------|
+| RAWR        |
+|-------------|
+     \   __
+      \ (_ \
+          \ \_.----._
+           \         \
+            |  ) |  )  \__
+            |_|--|_|'-.__/
+```
+
+**!cat Meow**
+
+```text
+|-------------|
+| MEOW        |
+|-------------|
+    \   /\_/\           ___
+     \ = o_o =_______    \ \
+        __^      __(  \.__) )
+    (@)<_____>__(_____)____/
+```
+
+**!dog woof**
+
+```text
+|-------------|
+| WOOF        |
+|-------------|
+    \     __
+     \ o-''|\_____/)
+        \_/|_)     )
+           \  __  /
+           (_/ (_/
+```
+
+And Many More!
+
+## Adding
+
+Just click here [here](https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267)
