@@ -11,8 +11,7 @@ import Foundation
 struct SignBuilder {
     var topChar: Character
     var sideChar: Character
-    var bottomChar: Character
-    var maxSignWidth = 13
+    var maxSignWidth: Int
     
     func build(with message: [String]) -> String{
         let message = auditMessage(message)
@@ -69,11 +68,23 @@ struct SignBuilder {
     
     func buildLine(line: String) -> String {
         let endBuffer = String(repeating: " ", count: maxSignWidth - (line.count + 1))
-        return "| \(line.uppercased())\(endBuffer)|"
+        return "\(sideChar) \(line.uppercased())\(endBuffer)\(sideChar)"
     }
     
     func buildSignBoundary() -> String {
-        let spaces = String(repeating: "-", count: maxSignWidth)
-        return "|" + spaces + "|"
+        let spaces = String(repeating: topChar, count: maxSignWidth)
+        return "\(sideChar)\(spaces)\(sideChar)"
+    }
+    
+    init(topChar: Character, sideChar: Character, maxSignWidth: Int) {
+        self.topChar = topChar
+        self.sideChar = sideChar
+        self.maxSignWidth = maxSignWidth
+    }
+    
+    init() {
+        self.topChar = "-"
+        self.sideChar = "|"
+        self.maxSignWidth = 13
     }
 }

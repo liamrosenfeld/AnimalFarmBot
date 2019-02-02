@@ -10,7 +10,7 @@ import Foundation
 
 struct BunnyBuilder {
     static let maxSignWidth = 13
-    static let signBuilder = SignBuilder(topChar: "-", sideChar: "|", bottomChar: "-", maxSignWidth: 13)
+    static let signBuilder = SignBuilder(topChar: "-", sideChar: "|", maxSignWidth: 13)
 
     static let bunny = """
                     (\\__/) ||
@@ -21,7 +21,7 @@ struct BunnyBuilder {
     static func build(with message: [String]) -> String {
         var message = message
         if message == ["bunny"] {
-            message = ["(__/)", "(•ㅅ•)", "/ 　 づ"]
+            message = ["(__/)    ", "(•ㅅ•)    ", "/ 　 づ"]
         }
         let signBunny = """
                     ```

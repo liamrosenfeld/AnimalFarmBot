@@ -32,15 +32,34 @@ bot.register("info", message: """
                             """)
 
 bot.register("help", message: """
-                            `!bunny <message>` -> Put that message in a sign
+                            `!<animal> <message>` -> animal says the message
+                            `!animal` -> Lists supported animals
                             `!ping` -> Ping the bot
                             `!help` -> Bring up this help menu
                             `!info` -> Show Credits and Link to Source Code
                             """)
 
+bot.register("!animals", message: """
+                            - `bunny` (Sign Bunny)
+                            - `cow`
+                            - `tux` (Penguin)
+                            """)
+
 bot.register("bunny") { msg, args in
     let bunny = BunnyBuilder.build(with: args)
     msg.reply(with: bunny)
+}
+
+bot.register("cow") { msg, args in
+    let animalMaker = AnimalBuilder(animal: .cow)
+    let cow = animalMaker.build(with: args)
+    msg.reply(with: cow)
+}
+
+bot.register("tux") { msg, args in
+    let animalMaker = AnimalBuilder(animal: .tux)
+    let tux = animalMaker.build(with: args)
+    msg.reply(with: tux)
 }
 
 bot.connect()
