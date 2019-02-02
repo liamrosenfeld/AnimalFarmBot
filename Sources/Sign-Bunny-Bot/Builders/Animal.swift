@@ -9,6 +9,12 @@
 import Foundation
 
 enum Animal: String {
+    case bunny = """
+                (\\__/) ||
+                (•ㅅ•) ||
+                / 　 づ
+                """
+    
     case cow = """
                 \\   ^__^
                  \\  (oo)\\_______
@@ -16,6 +22,7 @@ enum Animal: String {
                         ||----w |
                         ||     ||
             """
+    
     case tux = """
                 \\   .--.
                  \\ |o_o |
@@ -25,6 +32,7 @@ enum Animal: String {
                 /'\\_   _/`\\
                 \\___)=(___/
             """
+    
     case cat = """
         \\   /\\_/\\           ___
          \\ = o_o =_______    \\ \\

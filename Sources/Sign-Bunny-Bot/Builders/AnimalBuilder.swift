@@ -14,6 +14,11 @@ class AnimalBuilder {
     let signBuilder = SignBuilder()
     
     func build(with message: [String]) -> String {
+        var message = message
+        if message == ["bunny"] {
+            message = ["(__/)    ", "(•ㅅ•)    ", "/ 　 づ"]
+        }
+        
         let animalArt = """
         ```
         \(signBuilder.build(with: message))

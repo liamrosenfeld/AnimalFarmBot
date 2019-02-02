@@ -10,7 +10,11 @@ import Sword
 
 extension Shield {
     func addUtilities() {
-        self.register("ping", message: BunnyBuilder.build(with: ["🏓 Pong!"]))
+        self.register("ping") { msg, _ in
+            let animalMaker = AnimalBuilder(animal: Animal.allCases.randomElement() ?? .bunny)
+            let animal = animalMaker.build(with: ["Pong!"])
+            msg.reply(with: animal)
+        }
         
         self.register("info", message: """
                             <> with ❤ By Liam Rosenfeld.
@@ -29,12 +33,7 @@ extension Shield {
     }
     
     func addAnimals() {
-        self.register("bunny") { msg, args in
-            let bunny = BunnyBuilder.build(with: args)
-            msg.reply(with: bunny)
-        }
-        
-        var helpText = "Supported Animals:\n- `bunny` (Sign Bunny)"
+        var helpText = "Supported Animals:"
         
         Animal.allCases.forEach { animal in
             let name = String(describing: animal)
