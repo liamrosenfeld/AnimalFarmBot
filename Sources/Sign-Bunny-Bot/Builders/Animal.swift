@@ -1,5 +1,5 @@
 //
-//  Animals.swift
+//  Animal.swift
 //  Sign-Bunny-Bot
 //
 //  Created by Liam on 1/30/19.
@@ -25,4 +25,12 @@ enum Animal: String {
                 /'\\_   _/`\\
                 \\___)=(___/
             """
+    case cat = """
+        \\   /\\_/\\           ___
+         \\ = o_o =_______    \\ \\
+            __^      __(  \\.__) )
+        (@)<_____>__(_____)____/
+    """
 }
+
+extension Animal: CaseIterable {}
