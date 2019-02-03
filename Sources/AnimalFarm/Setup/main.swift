@@ -22,7 +22,9 @@ let shieldOptions = ShieldOptions(
 
 let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
 
-bot.editStatus(to: "online", playing: "Version 2 Test (So Be Nice) ;)")
+#if DEBUG
+    bot.editStatus(to: "online", playing: "Testing (So Be Nice) :)")
+#endif
 
 bot.addUtilities()
 

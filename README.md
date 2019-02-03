@@ -12,7 +12,7 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
 
 ## Examples
 
-**!bunny I Love Sign Bunnies!**
+`!bunny I Love Sign Bunnies!`
 
 ```text
 |-------------|
@@ -24,7 +24,7 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
 / 　 づ
 ```
 
-**!dino rawr**
+`!dino rawr`
 
 ```text
 |-------------|
@@ -38,7 +38,7 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
             |_|--|_|'-.__/
 ```
 
-**!cat Meow**
+`!cat Meow`
 
 ```text
 |-------------|
@@ -50,7 +50,7 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
     (@)<_____>__(_____)____/
 ```
 
-**!dog woof**
+`!dog woof`
 
 ```text
 |-------------|
