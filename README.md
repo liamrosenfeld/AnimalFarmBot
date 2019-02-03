@@ -67,4 +67,4 @@ And Many More!
 
 ## Adding
 
-Just click here [here](https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267)
+Just click [here](https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267)
