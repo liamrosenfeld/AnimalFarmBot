@@ -5,7 +5,7 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
 ## Commands
 
 `!<animal> <message>` -> animal says the message  
-`!animal` -> Lists supported animals  
+`!animals` -> Lists supported animals  
 `!ping` -> Ping the bot  
 `!help` -> Bring up this help menu  
 `!info` -> Show Credits and Link to Source Code  

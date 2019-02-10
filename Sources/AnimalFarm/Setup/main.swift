@@ -8,29 +8,21 @@
 
 import Foundation
 import Sword
-
-guard let token = ProcessInfo.processInfo.environment["DISCORD_BOT_SECRET"] else {
-    fatalError("No Secret Key Provided")
-}
-
-let swordOptions = SwordOptions()
-
-let shieldOptions = ShieldOptions(
-    prefixes: ["!"],
-    willIgnoreBots: true
-)
-
-let bot = Shield(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
+import HeliumLogger
+import LoggerAPI
 
 #if DEBUG
-    bot.editStatus(to: "online", playing: "Testing (So Be Nice) :)")
-    bot.addPrivateStats()
+    HeliumLogger.use(LoggerMessageType.debug)
 #else
-    bot.addPublicStats()
+    HeliumLogger.use(LoggerMessageType.info)
 #endif
 
-bot.addUtilities()
+do {
+    let bot = try Bot()
+    bot.start()
+} catch {
+    Log.error(error.localizedDescription)
+    fatalError(error.localizedDescription)
+}
 
-bot.addAnimals()
 
-bot.connect()
