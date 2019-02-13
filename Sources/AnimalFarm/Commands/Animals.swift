@@ -23,8 +23,7 @@ extension Shield {
         }
 
         self.register("random") { msg, args in
-            let animalMaker = AnimalBuilder(animal: Animal.allCases.randomElement() ?? .bunny)
-            let animal = animalMaker.build(with: args)
+            let animal = AnimalBuilder.randomBuilder.build(with: args)
             msg.reply(with: animal)
             helpText += "\n- `random`"
         }

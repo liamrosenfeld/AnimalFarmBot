@@ -21,9 +21,8 @@ class Bot: Shield {
         )
         
         super.init(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
-        
-        self.addStaticUtil()
-        self.addDynamicUtil()
+    
+        self.addUtil()
         self.addAnimals()
     }
     

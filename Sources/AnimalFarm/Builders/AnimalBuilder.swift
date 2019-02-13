@@ -28,7 +28,17 @@ class AnimalBuilder {
         return animalArt
     }
     
+    func build(with message: String) -> String {
+        let split = message.split(separator: " ").map{ String($0) }
+        return build(with: split)
+    }
+    
     init(animal: Animal) {
         self.animal = animal
+    }
+    
+    static var randomBuilder: AnimalBuilder {
+        let animal = Animal.allCases.randomElement() ?? .bunny
+        return AnimalBuilder(animal: animal)
     }
 }
