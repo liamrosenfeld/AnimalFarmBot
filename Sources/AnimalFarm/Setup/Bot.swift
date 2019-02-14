@@ -23,6 +23,7 @@ class Bot: Shield {
         super.init(token: token, swordOptions: swordOptions, shieldOptions: shieldOptions)
     
         self.addUtil()
+        self.addEvents()
         self.addAnimals()
     }
     
