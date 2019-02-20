@@ -10,7 +10,7 @@ import Sword
 
 class Bot: Shield {
     init() throws {
-        guard let token = ProcessInfo.processInfo.environment["DISCORD_BOT_SECRET"] else {
+        guard let token = ProcessInfo.processInfo.environment[SecretNames.bot.rawValue] else {
             throw BotError.noKey
         }
         
@@ -25,6 +25,7 @@ class Bot: Shield {
         self.addUtil()
         self.addEvents()
         self.addAnimals()
+        self.addHidden()
     }
     
     func start() {
