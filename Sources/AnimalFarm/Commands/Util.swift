@@ -7,8 +7,6 @@
 
 import Foundation
 import Sword
-import HeliumLogger
-import LoggerAPI
 
 extension Shield {
     func addUtil() {

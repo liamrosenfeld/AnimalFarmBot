@@ -11,30 +11,21 @@
         }
       },
       {
-        "package": "HeliumLogger",
-        "repositoryURL": "https://github.com/IBM-Swift/HeliumLogger.git",
-        "state": {
-          "branch": null,
-          "revision": "5ad546a39376b911a6cd4b06e8cadf60aa9e9472",
-          "version": "1.8.0"
-        }
-      },
-      {
-        "package": "LoggerAPI",
-        "repositoryURL": "https://github.com/IBM-Swift/LoggerAPI.git",
-        "state": {
-          "branch": null,
-          "revision": "d0ccb4158b83f8692531892a9c894bb757593c6f",
-          "version": "1.8.0"
-        }
-      },
-      {
         "package": "Starscream",
         "repositoryURL": "https://github.com/Azoy/Starscream.git",
         "state": {
           "branch": null,
           "revision": "a21fca8e9dc83cf3a88a3ba9be15ff17a7e4e8d6",
           "version": "3.0.5"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log.git",
+        "state": {
+          "branch": "master",
+          "revision": "55c927dd31fb5d37b9cad6b707cbe9bb2568c71f",
+          "version": null
         }
       },
       {

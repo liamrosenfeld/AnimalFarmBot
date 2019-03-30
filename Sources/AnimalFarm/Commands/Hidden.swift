@@ -7,8 +7,7 @@
 
 import Foundation
 import Sword
-import HeliumLogger
-import LoggerAPI
+import Logging
 
 extension Shield {
     func addHidden() {
@@ -35,14 +34,15 @@ extension Shield {
             for guild in self.guilds {
                 log += "\n - \(guild.value.name)"
             }
+            log += "\nTotal: \(self.guilds.count)"
             
-            Log.info(log)
+            Logger.log.info("\(log)")
         }
     }
     
     fileprivate func auth(_ pass: String) -> Bool {
         guard let password = ProcessInfo.processInfo.environment[SecretNames.stats.rawValue] else {
-            Log.warning("No Stat Password Provided")
+            Logger.log.warning("No Stat Password Provided")
             return false
         }
         

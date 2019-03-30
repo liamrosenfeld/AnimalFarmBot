@@ -7,11 +7,12 @@ let package = Package(
     name: "AnimalFarm",
     dependencies: [
         .package(url: "https://github.com/Azoy/Sword", .branch("master")),
-        .package(url: "https://github.com/IBM-Swift/HeliumLogger.git", from: "1.8.0")
+        .package(url: "https://github.com/apple/swift-log.git", .branch("master")),
     ],
     targets: [
         .target(
             name: "AnimalFarm",
-            dependencies: ["Sword", "HeliumLogger"])
+            dependencies: ["Sword", "Logging"]
+        )
     ]
 )

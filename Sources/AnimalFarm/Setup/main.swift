@@ -8,21 +8,15 @@
 
 import Foundation
 import Sword
-import HeliumLogger
-import LoggerAPI
-
-#if DEBUG
-    HeliumLogger.use(LoggerMessageType.debug)
-#else
-    HeliumLogger.use(LoggerMessageType.info)
-#endif
+import Logging
 
 do {
     let bot = try Bot()
     bot.start()
 } catch {
-    Log.error(error.localizedDescription)
     fatalError(error.localizedDescription)
 }
 
-
+extension Logger {
+    static var log = Logger(label: "com.liamrosenfeld.AnimalFarm")
+}
