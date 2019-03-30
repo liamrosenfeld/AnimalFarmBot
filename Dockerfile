@@ -1,4 +1,4 @@
-FROM swift:5.0
+FROM swift:5.0-xenial
 ADD . /app
 WORKDIR /app
 EXPOSE 8080

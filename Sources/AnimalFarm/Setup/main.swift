@@ -14,9 +14,6 @@ do {
     let bot = try Bot()
     bot.start()
 } catch {
+    Logger.log.emergency("/(error.localizedDescription)")
     fatalError(error.localizedDescription)
-}
-
-extension Logger {
-    static var log = Logger(label: "com.liamrosenfeld.AnimalFarm")
 }
