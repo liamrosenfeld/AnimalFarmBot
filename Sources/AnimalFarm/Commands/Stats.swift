@@ -12,10 +12,6 @@ import Logging
 extension Shield {
     func addHidden() {
         self.register("stats") { msg, args in
-            if !self.auth(args.first ?? "") {
-                return
-            }
-            
             let message = """
                         I Am In:
                         \(self.guilds.count) Servers
@@ -25,18 +21,22 @@ extension Shield {
             msg.reply(with: message)
         }
         
-        self.register("servers") { _, args in
+        self.register("servers") { msg, args in
             if !self.auth(args.first ?? "") {
                 return
             }
             
-            var log = "\nServers:"
+            var message = "\nServers:"
             for guild in self.guilds {
-                log += "\n - \(guild.value.name)"
+                message += "\n - \(guild.value.name)"
             }
-            log += "\nTotal: \(self.guilds.count)"
+            message += "\nTotal: \(self.guilds.count)"
             
-            Logger.log.info("\(log)")
+            if args[1] == "here" {
+                msg.reply(with: message)
+            } else {
+                Logger.log.info("\(message)")
+            }
         }
     }
     
