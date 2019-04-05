@@ -11,17 +11,22 @@ import Foundation
 class AnimalBuilder {
     var animal: Animal
     
-    let signBuilder = SignBuilder()
+    let animals = Animal.allCases.reduce(into: [String: String]()) {
+        $0[String(describing:$1)] = $1.rawValue
+    }
     
     func build(with message: [String]) -> String {
-        var message = message
-        if message == ["bunny"] {
-            message = ["(__/)    ", "(•ㅅ•)    ", "/ 　 づ"]
+        var content = [String]()
+        
+        if let special = animals[message.joined()] {
+            content = special.components(separatedBy: CharacterSet.newlines)
+        } else {
+            content = SignBuilder.createLines(with: message)
         }
         
         let animalArt = """
         ```
-        \(signBuilder.build(with: message))
+        \(SignBuilder.build(with: content))
         \(animal.rawValue)
         ```
         """

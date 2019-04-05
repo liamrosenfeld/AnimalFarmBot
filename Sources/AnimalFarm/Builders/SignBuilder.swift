@@ -8,30 +8,25 @@
 
 import Foundation
 
-struct SignBuilder {
-    var topChar: Character
-    var sideChar: Character
-    var maxSignWidth: Int
+class SignBuilder {
+    static let topChar = "-"
+    static let sideChar = "|"
+    static let maxSignWidth = 35
     
-    func build(with message: [String]) -> String{
+    static func build(with message: [String]) -> String{
         let message = auditMessage(message)
-        let sign = """
-                \(buildSignBoundary())
-                \(buildMiddle(with: message))
-                \(buildSignBoundary())
-                """
-        return sign
+        return buildSign(with: message)
     }
     
-    func auditMessage(_ message: [String]) -> [String] {
+    static func auditMessage(_ message: [String]) -> [String] {
         guard !message.isEmpty else {
-            let returnMessage = "No Message Given".split(separator: " ").map { String($0) }
+            let returnMessage = "No Message Given".components(separatedBy: CharacterSet.newlines)
             return returnMessage
         }
         
         for word in message {
             if (word.count > (maxSignWidth - 3)) {
-                let returnMessage =  "One of your words are too long".split(separator: " ").map { String($0) }
+                let returnMessage =  "One of your words are too long".components(separatedBy: CharacterSet.newlines)
                 return returnMessage
             }
         }
@@ -39,7 +34,7 @@ struct SignBuilder {
         return message
     }
     
-    func buildMiddle(with message: [String]) -> String {
+    static func createLines(with message: [String]) -> [String] {
         var lines = [String]()
         
         var line = ""
@@ -61,30 +56,32 @@ struct SignBuilder {
             lines.append(line)
         }
         
-        lines = lines.map(buildLine)
-        let middle = lines.joined(separator: "\n")
-        return middle
+        return lines
     }
     
-    func buildLine(line: String) -> String {
-        let endBuffer = String(repeating: " ", count: maxSignWidth - (line.count + 1))
-        return "\(sideChar) \(line.uppercased())\(endBuffer)\(sideChar)"
+    static func buildSign(with lines: [String]) -> String {
+        // Get Longest Length
+        var longest = 9
+        for line in lines {
+            if line.count > longest {
+                longest = line.count
+            }
+        }
+        
+        // Build
+        let boundary = buildSignBoundary(length: longest + 2)
+        var sign = boundary + "\n"
+        for line in lines {
+            let endBuffer = String(repeating: " ", count: longest - (line.count))
+            let full = "\(sideChar) \(line.uppercased())\(endBuffer) \(sideChar)\n"
+            sign.append(full)
+        }
+        sign.append(boundary)
+        return sign
     }
     
-    func buildSignBoundary() -> String {
-        let spaces = String(repeating: topChar, count: maxSignWidth)
-        return "\(sideChar)\(spaces)\(sideChar)"
-    }
-    
-    init(topChar: Character, sideChar: Character, maxSignWidth: Int) {
-        self.topChar = topChar
-        self.sideChar = sideChar
-        self.maxSignWidth = maxSignWidth
-    }
-    
-    init() {
-        self.topChar = "-"
-        self.sideChar = "|"
-        self.maxSignWidth = 13
+    static func buildSignBoundary(length: Int) -> String {
+        let dashes = String(repeating: topChar, count: length)
+        return "\(sideChar)\(dashes)\(sideChar)"
     }
 }

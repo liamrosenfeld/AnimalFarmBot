@@ -12,6 +12,7 @@ extension Shield {
     func addUtil() {
         self.register("help", message: """
                             `!<animal> <message>` -> animal says the message
+                            `!<animal> <animal>` -> an animal inside an animal... animal-ception!
                             `!animals` -> Lists supported animals
                             `!vote` -> Link to Upvote The Bot So More People Can Discover it
                             `!add` -> Link to Add This Bot to Your Own Server
