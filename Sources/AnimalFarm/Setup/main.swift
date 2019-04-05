@@ -14,6 +14,6 @@ do {
     let bot = try Bot()
     bot.start()
 } catch {
-    Logger.log.emergency("/(error.localizedDescription)")
+    Logger.log.critical("\(error.localizedDescription)")
     fatalError(error.localizedDescription)
 }

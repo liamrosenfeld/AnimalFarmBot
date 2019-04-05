@@ -70,6 +70,15 @@ enum Animal: String {
                         |  ) |  )  \__
                         |_|--|_|'-.__/
                 """#
+    
+    case frog = #"""
+                   \    _  _
+                    \  (.)(.)
+                   ,-.(.____.),-.
+                  ( \ \ '--' / / )
+                   \ \ / ,. \ / /
+                    ) '| || |' (
+                """#
 }
 
 extension Animal: CaseIterable {}

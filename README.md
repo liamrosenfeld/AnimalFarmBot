@@ -4,8 +4,8 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
 
 ## Commands
 
-`!<animal> <message>` -> animal says the message
-`!<animal> <animal>` -> an animal inside an animal... animal-ception! 
+`!<animal> <message>` -> animal says the message  
+`!<animal> <animal>... <message>` -> an animal inside an animal... animal-ception!  
 `!animals` -> Lists supported animals  
 `!ping` -> Ping the bot  
 `!help` -> Bring up this help menu  
@@ -62,6 +62,40 @@ A Discord bot that generates a custom sign bunny whenever requested. All that yo
         \_/|_)     )
            \  __  /
            (_/ (_/
+```
+
+`!bunny dino frog dog hi`
+
+```text
+|---------------------------|
+| |-----------------------| |
+| | |-------------------| | |
+| | | |-----------|     | | |
+| | | | HI        |     | | |
+| | | |-----------|     | | |
+| | |  \     __         | | |
+| | |   \ O-''|\_____/) | | |
+| | |      \_/|_)     ) | | |
+| | |         \  __  /  | | |
+| | |         (_/ (_/   | | |
+| | |-------------------| | |
+| |    \    _  _          | |
+| |     \  (.)(.)         | |
+| |    ,-.(.____.),-.     | |
+| |   ( \ \ '--' / / )    | |
+| |    \ \ / ,. \ / /     | |
+| |     ) '| || |' (      | |
+| |-----------------------| |
+|  \   __                   |
+|   \ (_ \                  |
+|       \ \_.----._         |
+|        \         \        |
+|         |  ) |  )  \__    |
+|         |_|--|_|'-.__/    |
+|---------------------------|
+(\__/) ||
+(•ㅅ•) ||
+/ 　 づ
 ```
 
 And Many More!
