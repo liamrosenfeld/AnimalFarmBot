@@ -23,13 +23,13 @@ extension Shield {
                             """)
         
         self.register("ping") { msg, _ in
-            let animal = AnimalBuilder.randomBuilder.build(with: ["Pong!"])
+            let animal = AnimalBuilder.buildRandom(with: ["Pong!"])
             msg.reply(with: animal)
         }
         
         self.register("vote") { msg, _ in
             let message = """
-                        \(AnimalBuilder.randomBuilder.build(with: "If You're Enjoying Me, Please Upvote Here:"))
+                        \(AnimalBuilder.buildRandom(with: "If You're Enjoying Me, Please Upvote Here:"))
                         <https://discordbots.org/bot/511688790994059267/vote>
                         """
             msg.reply(with: message)
@@ -37,7 +37,7 @@ extension Shield {
 
         self.register("add") { msg, _ in
             let message = """
-                        \(AnimalBuilder.randomBuilder.build(with: "Add Me To Your Own Server Here:"))
+                        \(AnimalBuilder.buildRandom(with: "Add Me To Your Own Server Here:"))
                         <https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267>
                         """
             msg.reply(with: message)
@@ -45,7 +45,7 @@ extension Shield {
         
         self.register("feedback") { msg, _ in
             let message = """
-            \(AnimalBuilder.randomBuilder.build(with: "Please Report Bugs or Give Sugessions Here:"))
+            \(AnimalBuilder.buildRandom(with: "Please Report Bugs or Give Sugessions Here:"))
             <https://github.com/liamrosenfeld/AnimalFarmBot/issues/new>
             """
             msg.reply(with: message)
@@ -53,7 +53,7 @@ extension Shield {
         
         self.register("info") { msg, _ in
             let message = """
-            \(AnimalBuilder.randomBuilder.build(with: "<> with ❤ By Liam Rosenfeld"))
+            \(AnimalBuilder.buildRandom(with: "<> with ❤ By Liam Rosenfeld"))
             Here's my Website: <https://www.liamrosenfeld.com>
             And Check Out The Source Code Here: <https://github.com/liamrosenfeld/AnimalFarmBot>
             """

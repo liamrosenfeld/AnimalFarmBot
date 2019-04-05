@@ -15,15 +15,14 @@ extension Shield {
         Animal.allCases.forEach { animal in
             let name = String(describing: animal)
             self.register(name) { msg, args in
-                let animalMaker = AnimalBuilder(animal: animal)
-                let animal = animalMaker.build(with: args)
+                let animal = AnimalBuilder.build(animal, with: args)
                 msg.reply(with: animal)
             }
             helpText += "\n- `\(name)`"
         }
 
         self.register("random") { msg, args in
-            let animal = AnimalBuilder.randomBuilder.build(with: args)
+            let animal = AnimalBuilder.buildRandom(with: args)
             msg.reply(with: animal)
             helpText += "\n- `random`"
         }

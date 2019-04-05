@@ -20,13 +20,13 @@ class SignBuilder {
     
     static func auditMessage(_ message: [String]) -> [String] {
         guard !message.isEmpty else {
-            let returnMessage = "No Message Given".components(separatedBy: CharacterSet.newlines)
+            let returnMessage = "No Message Given".components(separatedBy: .newlines)
             return returnMessage
         }
         
         for word in message {
             if (word.count > (maxSignWidth - 3)) {
-                let returnMessage =  "One of your words are too long".components(separatedBy: CharacterSet.newlines)
+                let returnMessage =  "One of your words are too long".components(separatedBy: .newlines)
                 return returnMessage
             }
         }
