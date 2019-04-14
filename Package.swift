@@ -7,7 +7,7 @@ let package = Package(
     name: "AnimalFarm",
     dependencies: [
         .package(url: "https://github.com/Azoy/Sword", .branch("master")),
-        .package(url: "https://github.com/apple/swift-log.git", .branch("master")),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
     ],
     targets: [
         .target(
