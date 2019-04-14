@@ -25,7 +25,7 @@ class Bot: Shield {
         self.addUtil()
         self.addEvents()
         self.addAnimals()
-        self.addHidden()
+        self.addStats()
     }
     
     func start() {

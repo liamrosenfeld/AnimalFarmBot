@@ -10,7 +10,7 @@ import Sword
 import Logging
 
 extension Shield {
-    func addHidden() {
+    func addStats() {
         self.register("stats") { msg, args in
             let message = """
                         I Am In:
@@ -32,7 +32,7 @@ extension Shield {
             }
             message += "\nTotal: \(self.guilds.count)"
             
-            if args[1] == "here" {
+            if args.last ?? "" == "here" {
                 msg.reply(with: message)
             } else {
                 Logger.log.info("\(message)")
