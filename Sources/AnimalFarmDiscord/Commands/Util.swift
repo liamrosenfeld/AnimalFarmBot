@@ -1,12 +1,14 @@
 //
 //  Util.swift
-//  AnimalFarm
+//  AnimalFarmDiscord
 //
-//  Created by Liam on 2/9/19.
+//  Created by Liam Rosenfeld on 2/9/19.
+//  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation
 import Sword
+import AnimalFarm
 
 extension Shield {
     func addUtil() {

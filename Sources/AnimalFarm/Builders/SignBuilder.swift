@@ -2,18 +2,18 @@
 //  SignBuilder.swift
 //  AnimalFarm
 //
-//  Created by Liam on 1/30/19.
+//  Created by Liam Rosenfeld on 1/30/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation
 
-class SignBuilder {
+public class SignBuilder {
     static let topChar = "-"
     static let sideChar = "|"
     static let maxSignWidth = 35
     
-    static func build(with message: [String]) -> String{
+    public static func build(with message: [String]) -> String{
         let message = auditMessage(message)
         return buildSign(with: message)
     }

@@ -2,13 +2,13 @@
 //  Animal.swift
 //  AnimalFarm
 //
-//  Created by Liam on 1/30/19.
+//  Created by Liam Rosenfeld on 1/30/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation
 
-enum Animal: String {
+public enum Animal: String {
     case bunny = #"""
     (\__/) ||
     (•ㅅ•) ||

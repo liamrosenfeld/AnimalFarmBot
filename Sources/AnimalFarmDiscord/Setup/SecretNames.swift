@@ -1,8 +1,9 @@
 //
 //  SecretNames.swift
-//  AnimalFarm
+//  AnimalFarmDiscord
 //
-//  Created by Liam on 2/19/19.
+//  Created by Liam Rosenfeld on 2/19/19.
+//  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation

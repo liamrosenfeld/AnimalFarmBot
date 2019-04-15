@@ -1,8 +1,9 @@
 //
 //  Logger+Log.swift
-//  AnimalFarm
+//  AnimalFarmDiscord
 //
-//  Created by Liam on 3/29/19.
+//  Created by Liam Rosenfeld on 3/29/19.
+//  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
 import Foundation
