@@ -25,13 +25,13 @@ extension Shield {
                             """)
         
         self.register("ping") { msg, _ in
-            let animal = AnimalBuilder.buildRandom(with: ["Pong!"])
+            let animal = AnimalFarm.buildRandom(with: ["Pong!"])
             msg.reply(with: animal)
         }
         
         self.register("vote") { msg, _ in
             let message = """
-                        \(AnimalBuilder.buildRandom(with: "If You're Enjoying Me, Please Upvote Here:"))
+                        \(AnimalFarm.buildRandom(with: "If You're Enjoying Me, Please Upvote Here:"))
                         <https://discordbots.org/bot/511688790994059267/vote>
                         """
             msg.reply(with: message)
@@ -39,7 +39,7 @@ extension Shield {
 
         self.register("add") { msg, _ in
             let message = """
-                        \(AnimalBuilder.buildRandom(with: "Add Me To Your Own Server Here:"))
+                        \(AnimalFarm.buildRandom(with: "Add Me To Your Own Server Here:"))
                         <https://discordapp.com/api/oauth2/authorize?scope=bot&client_id=511688790994059267>
                         """
             msg.reply(with: message)
@@ -47,7 +47,7 @@ extension Shield {
         
         self.register("feedback") { msg, _ in
             let message = """
-            \(AnimalBuilder.buildRandom(with: "Please Report Bugs or Give Sugessions Here:"))
+            \(AnimalFarm.buildRandom(with: "Please Report Bugs or Give Sugessions Here:"))
             <https://github.com/liamrosenfeld/AnimalFarmBot/issues/new>
             """
             msg.reply(with: message)
@@ -55,7 +55,7 @@ extension Shield {
         
         self.register("info") { msg, _ in
             let message = """
-            \(AnimalBuilder.buildRandom(with: "<> with ❤ By Liam Rosenfeld"))
+            \(AnimalFarm.buildRandom(with: "<> with ❤ By Liam Rosenfeld"))
             Here's my Website: <https://www.liamrosenfeld.com>
             And Check Out The Source Code Here: <https://github.com/liamrosenfeld/AnimalFarmBot>
             """

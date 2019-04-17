@@ -1,29 +1,27 @@
 //
-//  SignBuilder.swift
+//  BubbleBuilder.swift
 //  AnimalFarm
 //
 //  Created by Liam Rosenfeld on 1/30/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
-import Foundation
-
-public class SignBuilder {
-    static let topChar = "-"
-    static let sideChar = "|"
-    static let maxSignWidth = 35
+internal class BubbleBuilder {
+    let topChar: Character
+    let btmChar: Character
+    let leftChar: Character
+    let rightChar: Character
+    let maxSignWidth = 35
     
-    public static func build(with message: [String]) -> String{
+    func build(with message: [String]) -> String {
+        guard !message.isEmpty else {
+            return ""
+        }
         let message = auditMessage(message)
         return buildSign(with: message)
     }
     
-    static func auditMessage(_ message: [String]) -> [String] {
-        guard !message.isEmpty else {
-            let returnMessage = "No Message Given".components(separatedBy: .newlines)
-            return returnMessage
-        }
-        
+    func auditMessage(_ message: [String]) -> [String] {
         for word in message {
             if (word.count > (maxSignWidth - 3)) {
                 let returnMessage =  "One of your words are too long".components(separatedBy: .newlines)
@@ -34,7 +32,7 @@ public class SignBuilder {
         return message
     }
     
-    static func createLines(with message: [String]) -> [String] {
+    func createLines(with message: [String]) -> [String] {
         var lines = [String]()
         
         var line = ""
@@ -59,7 +57,7 @@ public class SignBuilder {
         return lines
     }
     
-    static func buildSign(with lines: [String]) -> String {
+    func buildSign(with lines: [String]) -> String {
         // Get Longest Length
         var longest = 9
         for line in lines {
@@ -69,19 +67,27 @@ public class SignBuilder {
         }
         
         // Build
-        let boundary = buildSignBoundary(length: longest + 2)
+        var boundary = buildSignBoundary(length: longest + 2, char: topChar)
         var sign = boundary + "\n"
         for line in lines {
             let endBuffer = String(repeating: " ", count: longest - (line.count))
-            let full = "\(sideChar) \(line.uppercased())\(endBuffer) \(sideChar)\n"
+            let full = "\(leftChar) \(line.uppercased())\(endBuffer) \(rightChar)\n"
             sign.append(full)
         }
+        boundary = buildSignBoundary(length: longest + 2, char: btmChar)
         sign.append(boundary)
         return sign
     }
     
-    static func buildSignBoundary(length: Int) -> String {
-        let dashes = String(repeating: topChar, count: length)
-        return "\(sideChar)\(dashes)\(sideChar)"
+    func buildSignBoundary(length: Int, char: Character) -> String {
+        let dashes = String(repeating: char, count: length)
+        return "\(leftChar)\(dashes)\(rightChar)"
+    }
+    
+    init(_ style: SpeechBubble) {
+        self.topChar   = style.top
+        self.btmChar   = style.btm
+        self.leftChar  = style.left
+        self.rightChar = style.right
     }
 }

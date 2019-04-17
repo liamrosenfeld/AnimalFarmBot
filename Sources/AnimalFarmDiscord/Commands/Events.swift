@@ -24,10 +24,10 @@ extension Shield {
                 return
             }
             
-            var message = AnimalBuilder.buildRandom(with: "Hello! I'm Animal Farm!")
-            message += AnimalBuilder.buildRandom(with: "Use Me By Typing !<animal> <message>")
-            message += AnimalBuilder.buildRandom(with: "Just Type !animals for a list of all available animals")
-            message += AnimalBuilder.buildRandom(with: "And !help for all command avaliable")
+            var message = AnimalFarm.buildRandom(with: "Hello! I'm Animal Farm!")
+            message += AnimalFarm.buildRandom(with: "Use Me By Typing !<animal> <message>")
+            message += AnimalFarm.buildRandom(with: "Just Type !animals for a list of all available animals")
+            message += AnimalFarm.buildRandom(with: "And !help for all command avaliable")
             channel.send(message)
         }
     }

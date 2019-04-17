@@ -17,14 +17,14 @@ extension Shield {
         Animal.allCases.forEach { animal in
             let name = String(describing: animal)
             self.register(name) { msg, args in
-                let animal = AnimalBuilder.build(animal, with: args)
+                let animal = AnimalFarm.build(animal, with: args)
                 msg.reply(with: animal)
             }
             helpText += "\n- `\(name)`"
         }
 
         self.register("random") { msg, args in
-            let animal = AnimalBuilder.buildRandom(with: args)
+            let animal = AnimalFarm.buildRandom(with: args)
             msg.reply(with: animal)
             helpText += "\n- `random`"
         }

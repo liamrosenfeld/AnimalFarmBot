@@ -72,5 +72,6 @@ xcuserdata/
 *.xccheckout
 *.xcscmblueprint
 
-### Discord ###
+### Extra ###
 .env
+.idea
