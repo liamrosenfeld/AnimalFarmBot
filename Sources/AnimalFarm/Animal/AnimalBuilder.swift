@@ -9,11 +9,6 @@
 import Foundation
 
 internal class AnimalBuilder {
-    static func addLine(of lineChar: String, to animal: Animal) -> String {
-        let art = animal.rawValue
-        return addLine(of: lineChar, to: art)
-    }
-
     static func addLine(of lineChar: String, to art: String) -> String {
         // Shared
         var lines = art.components(separatedBy: .newlines)
@@ -40,7 +35,9 @@ internal class AnimalBuilder {
         padding = ""
         if numPadding != 0 && secondSpaces.count != 0 {
             numPadding = secondSpaces.count - numPadding - 1
-            padding = String(repeating: " ", count: numPadding)
+            if numPadding > 0 {
+                padding = String(repeating: " ", count: numPadding)
+            }
         }
         for i in 0..<2 {
             lines[i] = padding + lines[i]

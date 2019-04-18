@@ -7,7 +7,7 @@
 
 internal let bubbles = [
     "say": say,
-    "think": SpeechBubble(
+    "think": Bubble(
             top: "~",
             btm: "~",
             left: "(",
@@ -16,7 +16,7 @@ internal let bubbles = [
     ),
 ]
 
-let say = SpeechBubble(
+internal let say = Bubble(
         top: "-",
         btm: "-",
         left: "|",

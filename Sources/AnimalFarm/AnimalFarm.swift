@@ -9,19 +9,15 @@
 import Foundation
 
 public class AnimalFarm {
-    static let animals = Animal.allCases.reduce(into: [String: String]()) { ( dict: inout [String: String], animal) in
-        dict[String(describing: animal)] = animal.rawValue
-    }
-
-    public static func build(_ animal: Animal, with message: [String]) -> String {
+    public static func build(_ animal: String, with message: [String]) -> String {
         return """
         ```
-        \(buildAnimal(animal.rawValue, doing: bubbles["say", default: say], with: message))
+        \(buildAnimal(animal, doing: bubbles["say", default: say], with: message))
         ```
         """
     }
 
-    static func buildAnimal(_ animal: String, doing bubbleStyle: SpeechBubble, with message: [String]) -> String {
+    static func buildAnimal(_ animal: String, doing bubbleStyle: Bubble, with message: [String]) -> String {
         var content = [String]()
         var animalArt = animal
         
@@ -48,14 +44,14 @@ public class AnimalFarm {
     }
 
     static func addLine(of style: String, to animal: String) -> String {
-        if animal != Animal.bunny.rawValue {
+        if animal != bunny {
             return AnimalBuilder.addLine(of: style, to: animal)
         }
         return animal
     }
 
     public static func buildRandom(with message: [String]) -> String {
-        let animal = Animal.allCases.randomElement() ?? .bunny
+        let animal = (animals.randomElement()?.value) ?? bunny
         return build(animal, with: message)
     }
 

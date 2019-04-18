@@ -14,11 +14,10 @@ extension Shield {
     func addAnimals() {
         var helpText = "Supported Animals:"
 
-        Animal.allCases.forEach { animal in
-            let name = String(describing: animal)
+        animals.forEach { name, art in
             self.register(name) { msg, args in
-                let animal = AnimalFarm.build(animal, with: args)
-                msg.reply(with: animal)
+                let message = AnimalFarm.build(art, with: args)
+                msg.reply(with: message)
             }
             helpText += "\n- `\(name)`"
         }

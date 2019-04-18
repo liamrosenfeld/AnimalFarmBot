@@ -11,7 +11,9 @@ internal class BubbleBuilder {
     let btmChar: Character
     let leftChar: Character
     let rightChar: Character
+
     let maxSignWidth = 35
+    let minSignWidth = 9
     
     func build(with message: [String]) -> String {
         guard !message.isEmpty else {
@@ -59,7 +61,7 @@ internal class BubbleBuilder {
     
     func buildSign(with lines: [String]) -> String {
         // Get Longest Length
-        var longest = 9
+        var longest = minSignWidth
         for line in lines {
             if line.count > longest {
                 longest = line.count
@@ -84,7 +86,7 @@ internal class BubbleBuilder {
         return "\(leftChar)\(dashes)\(rightChar)"
     }
     
-    init(_ style: SpeechBubble) {
+    init(_ style: Bubble) {
         self.topChar   = style.top
         self.btmChar   = style.btm
         self.leftChar  = style.left

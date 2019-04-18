@@ -1,82 +1,82 @@
 //
-//  Animal.swift
+//  Animals.swift
 //  AnimalFarm
 //
 //  Created by Liam Rosenfeld on 1/30/19.
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
-public enum Animal: String {
-    case bunny = #"""
-    (\__/) ||
-    (•ㅅ•) ||
-    / 　 づ
-    """#
+public let animals = [
+    "bunny": bunny,
     
-    case cow = #"""
+    "cow": #"""
     ^__^
     (oo)\_______
     (__)\       )\/\
         ||----w |
         ||     ||
-    """#
+    """#,
     
-    case tux = #"""
+    "tux": #"""
         .--.
        |o_o |
        |:_/ |
       //   \ \
      (|     | )
     /'\_   _/`\
-    \___)=(___/
-    """#
+    \___):(___/
+    """#,
     
-    case cat = #"""
+    "cat": #"""
         /\_/\           ___
-       = o_o =_______    \ \
+       : o_o :_______    \ \
         __^      __(  \.__) )
     (@)<_____>__(_____)____/
-    """#
+    """#,
     
-    case dog = #"""
+    "dog": #"""
        __
     o-''|\_____/)
      \_/|_)     )
         \  __  /
         (_/ (_/
-    """#
+    """#,
     
-    case pig = #"""
+    "pig": #"""
         _____
     ^..^     \9
     (oo)_____/
         WW  WW
-    """#
+    """#,
     
-    case hedgehog = #"""
+    "hedgehog": #"""
         ..::::::::.
        :::::::::::::
       /. `:::::::::::
      o__,_::::::::::'
-    """#
+    """#,
     
-    case dino = #"""
+    "dino": #"""
      __
     (_ \
       \ \_.----._
        \         \
        |  ) |  )  \__
        |_|--|_|'-.__/
-    """#
+    """#,
     
-    case frog = #"""
+    "frog": #"""
           _  _
          (.)(.)
      ,-.(.____.),-.
     ( \ \ '--' / / )
      \ \ / ,. \ / /
       ) '| || |' (
-    """#
-}
+    """#,
+]
 
-extension Animal: CaseIterable {}
+internal let bunny = #"""
+     (\__/) ||
+     (•ㅅ•) ||
+     / 　 づ
+     """#
