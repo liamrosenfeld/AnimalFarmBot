@@ -10,37 +10,53 @@ import Foundation
 
 public class AnimalFarm {
     public static func build(_ animal: String, with message: [String]) -> String {
+        let structure = convert(animal, doing: bubbles["say", default: say], with: message)
         return """
-        ```
-        \(buildAnimal(animal, doing: bubbles["say", default: say], with: message))
-        ```
-        """
+            ```
+            \(buildMessage(with: structure))
+            ```
+            """
     }
 
-    static func buildAnimal(_ animal: String, doing bubbleStyle: Bubble, with message: [String]) -> String {
-        var content = [String]()
-        var animalArt = animal
-        
-        let bubbleBuilder = BubbleBuilder(bubbleStyle)
+    // TODO: Move to AnimalFarmDiscord
+    static func convert(_ animal: String, doing bubbleStyle: Bubble, with message: [String]) -> MsgStructure {
+        var structure = MsgStructure(animal: animal)
         if let specialAnimal = animals[message.joined()] {
-            content = specialAnimal.components(separatedBy: .newlines)
+            // Animal Word with Nothing Else
+            structure.content = Content.message(specialAnimal.components(separatedBy: .newlines))
         } else if let specialAnimal = animals[message.first ?? ""] {
+            // Animal Word Followed By Something Else
             let specialAnimal = addLine(of: bubbleStyle.line, to: specialAnimal)
             var message = message
             message.removeFirst()
-            content = buildAnimal(specialAnimal, doing: bubbleStyle, with: message).components(separatedBy: .newlines)
+            structure.content = Content.animal(convert(specialAnimal, doing: bubbleStyle, with: message))
         } else {
-            content = bubbleBuilder.createLines(with: message)
-            if !message.isEmpty {
-                animalArt = addLine(of: bubbleStyle.line, to: animal)
-            }
+            // Just Message
+            structure.content = Content.message(BubbleBuilder.createLines(with: message))
         }
 
-        let final = """
-            \(bubbleBuilder.build(with: content))
-            \(animalArt))
-            """
-        return final
+        return structure
+    }
+
+    static func buildMessage(with structure: MsgStructure) -> String {
+        let bubbleBuilder = BubbleBuilder(structure.style)
+        var content = [String]()
+
+        switch structure.content {
+        case .animal(let next):
+            content = buildMessage(with: next).components(separatedBy: .newlines)
+        case .message(let message):
+            content = message
+        }
+
+        let bubble = bubbleBuilder.build(with: content)
+        let animal = addLine(of: structure.style.line, to: structure.animal)
+
+        let assembled = """
+                    \(bubble)
+                    \(animal))
+                    """
+        return assembled
     }
 
     static func addLine(of style: String, to animal: String) -> String {

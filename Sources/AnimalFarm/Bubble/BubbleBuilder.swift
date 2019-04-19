@@ -12,8 +12,8 @@ internal class BubbleBuilder {
     let leftChar: Character
     let rightChar: Character
 
-    let maxSignWidth = 35
-    let minSignWidth = 9
+    static let maxSignWidth = 35
+    static let minSignWidth = 9
     
     func build(with message: [String]) -> String {
         guard !message.isEmpty else {
@@ -25,7 +25,7 @@ internal class BubbleBuilder {
     
     func auditMessage(_ message: [String]) -> [String] {
         for word in message {
-            if (word.count > (maxSignWidth - 3)) {
+            if (word.count > (BubbleBuilder.maxSignWidth - 3)) {
                 let returnMessage =  "One of your words are too long".components(separatedBy: .newlines)
                 return returnMessage
             }
@@ -34,7 +34,7 @@ internal class BubbleBuilder {
         return message
     }
     
-    func createLines(with message: [String]) -> [String] {
+    static func createLines(with message: [String]) -> [String] {
         var lines = [String]()
         
         var line = ""
@@ -61,7 +61,7 @@ internal class BubbleBuilder {
     
     func buildSign(with lines: [String]) -> String {
         // Get Longest Length
-        var longest = minSignWidth
+        var longest = BubbleBuilder.minSignWidth
         for line in lines {
             if line.count > longest {
                 longest = line.count
