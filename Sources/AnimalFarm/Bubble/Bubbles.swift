@@ -15,13 +15,13 @@ public let bubbles = [
             line: "0"
     ),
     "yell": Bubble(
-            top: "M",
-            btm: "W",
+            top: "∧",
+            btm: "∨",
             left: "<",
             right: ">",
             line: "X"
     ),
-    "title": Bubble(
+    "sign": Bubble(
             top: "-",
             btm: "-",
             left: "|",

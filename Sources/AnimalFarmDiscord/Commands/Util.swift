@@ -13,16 +13,57 @@ import AnimalFarm
 extension Shield {
     func addUtil() {
         self.register("help", message: """
-                            `!<animal> <message>` -> animal says the message
-                            `!<animal> <animal>... <message>` -> an animal inside an animal... animal-ception!
-                            `!animals` -> Lists supported animals
-                            `!vote` -> Link to Upvote The Bot So More People Can Discover it
-                            `!add` -> Link to Add This Bot to Your Own Server
-                            `!feedback` -> Link to Report Bugs Or Give Sugessions
-                            `!ping` -> Ping the bot
-                            `!help` -> Bring up this help menu
-                            `!info` -> Credits and Link To Source Code
-                            """)
+        **Normal Animals**
+        !<animal> [--style] <message>  
+            animal says the message
+            * animal: animal to say it
+            * --style (optional): style of the bubble
+            * message: message to say
+
+        !<animal>
+            just send an animal
+            * animal: animal to send
+
+        **Animal-Ception**
+        !<animal> [--style] <animal> [--style]... <message>
+            an animal inside an animal... saying a message!
+            * animal --style (repeating):  the animal and bubble style of each layer
+            * message: message to say
+
+        !<animal> [--style] <animal> [--style]... <animal>
+            an animal inside an animal inside an animal...
+            * animal --style (repeating): the animal and bubble style of each layer
+            * animal: the final animal
+
+        **Lists**
+        !animals  
+            Lists supported animals
+
+        !bubbles  
+            Lists supported bubbles
+
+        **Utilities**
+        !help  
+            bring up this help menu
+
+        !info
+            show credits and link to source code
+
+        !vote
+            shows how to vote for this bot
+
+        !feedback
+            link for bug report or suggestions
+
+        !add
+            link to add to your own server
+
+        !ping  
+            ping the bot
+
+        !stats
+            shows stats for bot
+        """)
         
         self.register("ping") { msg, _ in
             let animal = AnimalFarm.buildRandom(with: ["Pong!"])
@@ -47,7 +88,7 @@ extension Shield {
         
         self.register("feedback") { msg, _ in
             let message = """
-            \(AnimalFarm.buildRandom(with: "Please Report Bugs or Give Sugessions Here:"))
+            \(AnimalFarm.buildRandom(with: "Please Report Bugs or Give Suggestions Here:"))
             <https://github.com/liamrosenfeld/AnimalFarmBot/issues/new>
             """
             msg.reply(with: message)

@@ -12,23 +12,32 @@ import AnimalFarm
 
 extension Shield {
     func addAnimals() {
-        var helpText = "Supported Animals:"
-
+        // Add Individual Animals
+        var animalList = "Supported Animals:"
         animals.forEach { name, animal in
             self.register(name) { msg, args in
-                let structure = Structure.convert(animal, with: args)
+                let structure = Translate.convert(animal, with: args)
                 let message = AnimalFarm.build(structure)
                 msg.reply(with: message)
             }
-            helpText += "\n- `\(name)`"
+            animalList += "\n- `\(name)`"
         }
 
+        // Add Random Animal
         self.register("random") { msg, args in
             let animal = AnimalFarm.buildRandom(with: args)
             msg.reply(with: animal)
-            helpText += "\n- `random`"
+            animalList += "\n- `random`"
         }
 
-        self.register("animals", message: helpText)
+        // Add Animal Help
+        self.register("animals", message: animalList)
+
+        // Add Bubble Help
+        var bubbleList = "Supported Bubbles:"
+        bubbles.forEach { name, _ in
+            bubbleList += "\n- `\(name)`"
+        }
+        self.register("bubbles", message: bubbleList)
     }
 }

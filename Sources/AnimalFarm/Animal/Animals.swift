@@ -114,5 +114,5 @@ internal let bunny = Animal(
         / 　 づ
         """#,
         recBubbleWidth: 15,
-        defaultBubble: bubbles["title"]!
+        defaultBubble: bubbles["sign"]!
 )
