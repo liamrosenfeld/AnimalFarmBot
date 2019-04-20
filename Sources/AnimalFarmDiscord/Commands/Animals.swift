@@ -14,9 +14,10 @@ extension Shield {
     func addAnimals() {
         var helpText = "Supported Animals:"
 
-        animals.forEach { name, art in
+        animals.forEach { name, animal in
             self.register(name) { msg, args in
-                let message = AnimalFarm.build(art, with: args)
+                let structure = Structure.convert(animal, with: args)
+                let message = AnimalFarm.build(structure)
                 msg.reply(with: message)
             }
             helpText += "\n- `\(name)`"
@@ -31,4 +32,3 @@ extension Shield {
         self.register("animals", message: helpText)
     }
 }
-

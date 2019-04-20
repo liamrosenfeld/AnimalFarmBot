@@ -9,74 +9,110 @@
 public let animals = [
     "bunny": bunny,
     
-    "cow": #"""
-    ^__^
-    (oo)\_______
-    (__)\       )\/\
-        ||----w |
-        ||     ||
-    """#,
-    
-    "tux": #"""
-        .--.
-       |o_o |
-       |:_/ |
-      //   \ \
-     (|     | )
-    /'\_   _/`\
-    \___):(___/
-    """#,
-    
-    "cat": #"""
-        /\_/\           ___
-       : o_o :_______    \ \
-        __^      __(  \.__) )
-    (@)<_____>__(_____)____/
-    """#,
-    
-    "dog": #"""
-       __
-    o-''|\_____/)
-     \_/|_)     )
-        \  __  /
-        (_/ (_/
-    """#,
-    
-    "pig": #"""
-        _____
-    ^..^     \9
-    (oo)_____/
-        WW  WW
-    """#,
-    
-    "hedgehog": #"""
-        ..::::::::.
-       :::::::::::::
-      /. `:::::::::::
-     o__,_::::::::::'
-    """#,
-    
-    "dino": #"""
-     __
-    (_ \
-      \ \_.----._
-       \         \
-       |  ) |  )  \__
-       |_|--|_|'-.__/
-    """#,
-    
-    "frog": #"""
-          _  _
-         (.)(.)
-     ,-.(.____.),-.
-    ( \ \ '--' / / )
-     \ \ / ,. \ / /
-      ) '| || |' (
-    """#,
+    "cow": Animal(
+        art: #"""
+        ^__^
+        (oo)\_______
+        (__)\       )\/\
+            ||----w |
+            ||     ||
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "tux": Animal(
+        art: #"""
+            .--.
+           |o_o |
+           |:_/ |
+          //   \ \
+         (|     | )
+        /'\_   _/`\
+        \___):(___/
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "cat": Animal(
+        art: #"""
+            /\_/\           ___
+           : o_o :_______    \ \
+              ^      __(  \.__) )
+        (@)<_____>__(_____)____/
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "dog": Animal(
+        art: #"""
+           __
+        o-''|\_____/)
+         \_/|_)     )
+            \  __  /
+            (_/ (_/
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "pig": Animal(
+        art: #"""
+            _____
+        ^..^     \9
+        (oo)_____/
+           WW  WW
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "hedgehog": Animal(
+        art: #"""
+           ..::::::::.
+          :::::::::::::
+         /. `:::::::::::
+        o__,_::::::::::'
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "dino": Animal(
+        art: #"""
+         __
+        (_ \
+          \ \_.----._
+           \         \
+           |  ) |  )  \__
+           |_|--|_|'-.__/
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    ),
+
+    "frog": Animal(
+        art: #"""
+              _  _
+             (.)(.)
+         ,-.(.____.),-.
+        ( \ \ '--' / / )
+         \ \ / ,. \ / /
+          ) '| || |' (
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["say"]!
+    )
 ]
 
-internal let bunny = #"""
-     (\__/) ||
-     (•ㅅ•) ||
-     / 　 づ
-     """#
+internal let bunny = Animal(
+        art: #"""
+        (\__/) ||
+        (•ㅅ•) ||
+        / 　 づ
+        """#,
+        recBubbleWidth: 15,
+        defaultBubble: bubbles["title"]!
+)

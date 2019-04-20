@@ -6,10 +6,10 @@
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
-internal struct Bubble {
+public struct Bubble {
     var top: Character
     var btm: Character
     var left: Character
     var right: Character
-    var line: String
+    public var line: String
 }

@@ -10,6 +10,10 @@ import Foundation
 
 internal class AnimalBuilder {
     static func addLine(of lineChar: String, to art: String) -> String {
+        guard lineChar != "" else {
+            return art
+        }
+
         // Shared
         var lines = art.components(separatedBy: .newlines)
         let index = Array(lines[1]).firstIndex { $0 != " "} ?? 0

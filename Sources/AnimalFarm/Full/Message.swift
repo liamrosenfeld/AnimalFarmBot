@@ -1,16 +1,21 @@
 //
-// Created by Liam on 2019-04-18.
+//  Message.swift
+//  AnimalFarm
 //
+//  Created by Liam Rosenfeld on 4/18/19.
+//  Copyright © 2019 Liam Rosenfeld. All rights reserved.
+//
+
 
 import Foundation
 
 public struct MsgStructure {
-    var animal: String
-    var style: Bubble
-    var content: Content
+    public var animal: String
+    public var style: Bubble
+    public var content: Content
 }
 
-extension MsgStructure {
+public extension MsgStructure {
     init(animal: String, content: Content) {
         self.animal = animal
         self.style = say
@@ -31,6 +36,7 @@ extension MsgStructure {
 }
 
 public indirect enum Content {
-    case animal(MsgStructure)
+    case embed(MsgStructure)
     case message([String])
+    case asciiArt([String])
 }

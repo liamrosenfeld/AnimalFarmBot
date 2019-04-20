@@ -5,7 +5,7 @@
 //  Created by Liam on 4/15/19.
 //
 
-internal let bubbles = [
+public let bubbles = [
     "say": say,
     "think": Bubble(
             top: "~",
@@ -14,9 +14,23 @@ internal let bubbles = [
             right: ")",
             line: "0"
     ),
+    "yell": Bubble(
+            top: "M",
+            btm: "W",
+            left: "<",
+            right: ">",
+            line: "X"
+    ),
+    "title": Bubble(
+            top: "-",
+            btm: "-",
+            left: "|",
+            right: "|",
+            line: ""
+    ),
 ]
 
-internal let say = Bubble(
+public let say = Bubble(
         top: "-",
         btm: "-",
         left: "|",
