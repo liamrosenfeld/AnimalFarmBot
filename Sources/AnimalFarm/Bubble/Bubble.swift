@@ -12,4 +12,5 @@ public struct Bubble {
     var left: Character
     var right: Character
     public var line: String
+    var topSides: Bool
 }

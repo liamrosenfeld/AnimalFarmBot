@@ -12,6 +12,7 @@ internal class BubbleBuilder {
     let btmChar: Character
     let leftChar: Character
     let rightChar: Character
+    let topSides: Bool
 
     // Bubble Dimensions
     let maxSignWidth = 32
@@ -47,7 +48,12 @@ internal class BubbleBuilder {
     
     func buildSignBoundary(length: Int, char: Character) -> String {
         let dashes = String(repeating: char, count: length)
-        return "\(leftChar)\(dashes)\(rightChar)"
+        if topSides {
+            return "\(leftChar)\(dashes)\(rightChar)"
+        } else {
+            return " \(dashes) "
+        }
+
     }
 
     // Line Splitting
@@ -100,5 +106,6 @@ internal class BubbleBuilder {
         self.btmChar   = style.btm
         self.leftChar  = style.left
         self.rightChar = style.right
+        self.topSides  = style.topSides
     }
 }

@@ -12,21 +12,24 @@ public let bubbles = [
             btm: "~",
             left: "(",
             right: ")",
-            line: "0"
+            line: "0",
+            topSides: false
     ),
     "yell": Bubble(
             top: "∧",
             btm: "∨",
             left: "<",
             right: ">",
-            line: "X"
+            line: "X",
+            topSides: false
     ),
     "sign": Bubble(
             top: "-",
             btm: "-",
             left: "|",
             right: "|",
-            line: ""
+            line: "",
+            topSides: true
     ),
 ]
 
@@ -35,5 +38,6 @@ public let say = Bubble(
         btm: "-",
         left: "|",
         right: "|",
-        line: "\\"
+        line: "\\",
+        topSides: true
 )
