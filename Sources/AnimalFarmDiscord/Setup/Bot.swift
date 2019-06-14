@@ -9,7 +9,7 @@
 import Foundation
 import Sword
 
-class Bot: Shield {
+final class Bot: Shield {
     init() throws {
         guard let token = ProcessInfo.processInfo.environment[SecretNames.bot.rawValue] else {
             throw BotError.noKey

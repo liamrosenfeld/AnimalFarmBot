@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class AnimalBuilder {
+internal struct AnimalBuilder {
     static func addLine(of lineChar: String, to art: String) -> String {
         guard lineChar != "" else {
             return art

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Liam Rosenfeld. All rights reserved.
 //
 
-internal class BubbleBuilder {
+internal struct BubbleBuilder {
     // Bubble Characters
     let topChar: Character
     let btmChar: Character
@@ -57,7 +57,7 @@ internal class BubbleBuilder {
     }
 
     // Line Splitting
-    func createLines(with message: [String]) -> [String] {
+    mutating func createLines(with message: [String]) -> [String] {
         let message = checkLength(message)
         var lines = [String]()
 
@@ -83,7 +83,7 @@ internal class BubbleBuilder {
         return lines
     }
 
-    func checkLength(_ message: [String]) -> [String] {
+    mutating func checkLength(_ message: [String]) -> [String] {
         for word in message {
             let count = word.count
             // Check None Longer Than Max

@@ -9,7 +9,7 @@
 import Foundation
 import AnimalFarm
 
-class Translate {
+struct Translate {
     static func convert(_ animal: Animal, with message: [String]) -> MsgStructure {
         var structure = MsgStructure(animal: animal.art, style: animal.defaultBubble)
         var message = message

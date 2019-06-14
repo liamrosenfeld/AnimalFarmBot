@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class AnimalFarm {
+public struct AnimalFarm {
     public static func build(_ structure: MsgStructure) -> String {
         return """
             ```
@@ -18,7 +18,7 @@ public class AnimalFarm {
     }
 
     static func buildMessage(with structure: MsgStructure) -> String {
-        let bubbleBuilder = BubbleBuilder(structure.style)
+        var bubbleBuilder = BubbleBuilder(structure.style)
         var content = [String]()
 
         // Fill Content With Structure Content
