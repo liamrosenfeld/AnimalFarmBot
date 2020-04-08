@@ -73,7 +73,7 @@ extension Shield {
         self.register("vote") { msg, _ in
             let message = """
                         \(AnimalFarm.buildRandom(with: "If You're Enjoying Me, Please Upvote Here:"))
-                        <https://discordbots.org/bot/511688790994059267/vote>
+                        <https://top.gg/bot/511688790994059267/vote>
                         """
             msg.reply(with: message)
         }
