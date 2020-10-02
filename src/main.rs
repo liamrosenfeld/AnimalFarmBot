@@ -10,10 +10,11 @@ use serenity::{
 use std::{collections::HashSet, env};
 
 mod commands;
-use commands::{meta::*, owner::*};
+mod converter;
+use commands::{animals::*, meta::*, owner::*};
 
 #[group]
-#[commands(ping, send)]
+#[commands(ping, send, bunny)]
 struct General;
 
 struct Handler;
