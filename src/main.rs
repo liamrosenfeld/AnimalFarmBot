@@ -15,7 +15,8 @@ use commands::{animals::*, meta::*, owner::*};
 
 #[group]
 #[commands(
-    ping, send, bunny, cow, tux, cat, dog, pig, hedgehog, dino, frog, random
+    ping, vote, add, feedback, info, help, send, bunny, cow, tux, cat, dog, pig, hedgehog, dino,
+    frog, random
 )]
 struct General;
 
