@@ -41,7 +41,7 @@ async fn main() {
 
     // Create framework
     let framework = StandardFramework::new()
-        .configure(|c| c.prefix("~").owners(owners))
+        .configure(|c| c.prefix("!").owners(owners))
         .group(&GENERAL_GROUP);
 
     // Create client
