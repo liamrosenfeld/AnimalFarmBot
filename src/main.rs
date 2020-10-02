@@ -1,17 +1,18 @@
 use dotenv::dotenv;
-use log::{error, info};
+use log::error;
 use serenity::{
-    async_trait,
     framework::standard::{macros::group, StandardFramework},
     http::Http,
-    model::{event::ResumedEvent, gateway::Ready},
     prelude::*,
 };
 use std::{collections::HashSet, env};
 
 mod commands;
 mod converter;
+mod events;
+
 use commands::{animals::*, meta::*, owner::*};
+use events::Handler;
 
 #[group]
 #[commands(
@@ -19,19 +20,6 @@ use commands::{animals::*, meta::*, owner::*};
     frog, random
 )]
 struct General;
-
-struct Handler;
-
-#[async_trait]
-impl EventHandler for Handler {
-    async fn ready(&self, _: Context, ready: Ready) {
-        info!("Connected as {}", ready.user.name);
-    }
-
-    async fn resume(&self, _: Context, _: ResumedEvent) {
-        info!("Resumed");
-    }
-}
 
 #[tokio::main]
 async fn main() {
