@@ -6,6 +6,27 @@ use serenity::model::channel::Message;
 use crate::converter::animals::Animal;
 use crate::converter::build;
 
+const ANIMAL_LIST: &str = r#"
+Supported Animals:
+- `bunny`
+- `cow`
+- `tux`
+- `cat`
+- `dog`
+- `pig`
+- `hedgehog`
+- `dino`
+- `frog`
+"#;
+
+#[command]
+async fn animals(ctx: &Context, msg: &Message) -> CommandResult {
+    msg.channel_id
+        .send_message(ctx, |m| m.content(ANIMAL_LIST))
+        .await?;
+    Ok(())
+}
+
 #[command]
 async fn bunny(ctx: &Context, msg: &Message) -> CommandResult {
     send_animal_msg(ctx, msg, Animal::Bunny).await
