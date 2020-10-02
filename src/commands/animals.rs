@@ -1,3 +1,4 @@
+use rand;
 use serenity::client::Context;
 use serenity::framework::standard::macros::command;
 use serenity::framework::standard::CommandResult;
@@ -49,6 +50,11 @@ async fn dino(ctx: &Context, msg: &Message) -> CommandResult {
 #[command]
 async fn frog(ctx: &Context, msg: &Message) -> CommandResult {
     send_animal_msg(ctx, msg, Animal::Frog).await
+}
+
+#[command]
+async fn random(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, rand::random()).await
 }
 
 async fn send_animal_msg(ctx: &Context, msg: &Message, animal: Animal) -> CommandResult {

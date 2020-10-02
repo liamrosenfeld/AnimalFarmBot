@@ -1,3 +1,6 @@
+use rand::distributions::{Distribution, Standard};
+use rand::Rng;
+
 pub enum Animal {
     Bunny,
     Cow,
@@ -22,6 +25,23 @@ impl Animal {
             Animal::Hedgehog => HEDGEHOG,
             Animal::Dino => DINO,
             Animal::Frog => FROG,
+        }
+    }
+}
+
+impl Distribution<Animal> for Standard {
+    fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Animal {
+        match rng.gen_range(0, 9) {
+            0 => Animal::Bunny,
+            1 => Animal::Cow,
+            2 => Animal::Tux,
+            3 => Animal::Cat,
+            4 => Animal::Dog,
+            5 => Animal::Pig,
+            6 => Animal::Hedgehog,
+            7 => Animal::Dino,
+            8 => Animal::Frog,
+            _ => Animal::Bunny,
         }
     }
 }

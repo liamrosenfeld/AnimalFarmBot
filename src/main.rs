@@ -14,7 +14,9 @@ mod converter;
 use commands::{animals::*, meta::*, owner::*};
 
 #[group]
-#[commands(ping, send, bunny, cow, tux, cat, dog, pig, hedgehog, dino, frog)]
+#[commands(
+    ping, send, bunny, cow, tux, cat, dog, pig, hedgehog, dino, frog, random
+)]
 struct General;
 
 struct Handler;

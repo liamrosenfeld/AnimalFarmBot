@@ -12,6 +12,7 @@ version = "0.1.0"
 dependencies = [
  "dotenv",
  "log",
+ "rand",
  "serenity",
  "tokio",
 ]
