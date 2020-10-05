@@ -85,10 +85,10 @@ async fn help(ctx: &Context, msg: &Message) -> CommandResult {
 const HELP_TEXT: &str = r#"
 **Sending**
 `!<animal> <message>`
-animal says the message
+send an animal saying the message
 
 `!<animal>`
-just sends an animal
+sends an animal saying a random message
 
 **Utilities**
 `!animals`

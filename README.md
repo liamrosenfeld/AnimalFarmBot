@@ -6,10 +6,10 @@ A Discord bot that generates custom animal ascii art whenever requested. See [co
 
 **Sending**  
 `!<animal> <message>`  
-animal says the message
+send an animal saying the message
 
 `!<animal>`  
-just send an animal
+sends an animal saying a random message
 
 **Utilities**  
 `!animals`  

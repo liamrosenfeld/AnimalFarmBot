@@ -7,15 +7,10 @@ const MIN_CHAR_LIMIT: usize = 15;
 const MAX_CHAR_LIMIT: usize = 32;
 
 pub fn build(message: Vec<&str>) -> String {
-    // Return no sign if there is no message
-    if message.is_empty() {
-        return "".to_string();
-    }
-
     // Calculate char limit for line
     let char_limit = message.iter().fold(MIN_CHAR_LIMIT, |longest, &current| {
-        if current.len() > longest {
-            current.len()
+        if current.chars().count() > longest {
+            current.chars().count()
         } else {
             longest
         }
@@ -24,7 +19,7 @@ pub fn build(message: Vec<&str>) -> String {
     // Check None Longer Than Max
     if char_limit > MAX_CHAR_LIMIT {
         return build(
-            "One of your words are too long"
+            "One or more of your words are too long"
                 .split_whitespace()
                 .collect(),
         );
@@ -54,8 +49,8 @@ pub fn build(message: Vec<&str>) -> String {
 
     // Find final sign width
     let longest_line = lines.iter().fold(MIN_SIGN_WIDTH, |longest, current| {
-        if current.len() > longest {
-            current.len()
+        if current.chars().count() > longest {
+            current.chars().count()
         } else {
             longest
         }
@@ -65,7 +60,7 @@ pub fn build(message: Vec<&str>) -> String {
     let mut padded_lines: Vec<String> = lines
         .iter()
         .map(|line| {
-            let pad_length = longest_line - line.len();
+            let pad_length = longest_line - line.chars().count();
             let padding = std::iter::repeat(" ").take(pad_length).collect::<String>();
             format!("{} {}{} {}", V_CHAR, line, padding, V_CHAR)
         })
