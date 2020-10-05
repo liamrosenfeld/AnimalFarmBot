@@ -11,6 +11,10 @@ pub enum Animal {
     Hedgehog,
     Dino,
     Frog,
+    Owl,
+    Squirrel,
+    Duck,
+    Ducks,
 }
 
 impl Animal {
@@ -25,13 +29,17 @@ impl Animal {
             Animal::Hedgehog => HEDGEHOG,
             Animal::Dino => DINO,
             Animal::Frog => FROG,
+            Animal::Owl => OWL,
+            Animal::Squirrel => SQUIRREL,
+            Animal::Duck => DUCK,
+            Animal::Ducks => DUCKS,
         }
     }
 }
 
 impl Distribution<Animal> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Animal {
-        match rng.gen_range(0, 9) {
+        match rng.gen_range(0, 12) {
             0 => Animal::Bunny,
             1 => Animal::Cow,
             2 => Animal::Tux,
@@ -41,6 +49,9 @@ impl Distribution<Animal> for Standard {
             6 => Animal::Hedgehog,
             7 => Animal::Dino,
             8 => Animal::Frog,
+            9 => Animal::Owl,
+            10 => Animal::Squirrel,
+            11 => Animal::Duck,
             _ => Animal::Bunny,
         }
     }
@@ -115,4 +126,32 @@ const FROG: &str = r#"
     ( \ \ '--' / / )
      \ \ / ,. \ / /
       ) '| || |' (
+"#;
+
+const OWL: &str = r#"
+   \ ,_,
+    (o,o)
+    (   )
+    -"-"---dwb-
+"#;
+
+const SQUIRREL: &str = r#"
+ __  (\_ /
+(_ \ ( '>
+  ) \/_)=
+  (_(_ )_
+"#;
+
+const DUCK: &str = r#"
+ \  _
+  >(')____,
+   (` =~~/
+ ^~^`---'~^~
+"#;
+
+const DUCKS: &str = r#"
+ \  _       \  _          _
+  >(')____,  >(')____,  =(')____,
+   (` =~~/    (` =~~/    (` =~~/
+ ^~^`---'~^~^~^`---'~^~^~^`---'~^~^
 "#;

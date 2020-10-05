@@ -17,6 +17,9 @@ Supported Animals:
 - `hedgehog`
 - `dino`
 - `frog`
+- `owl`
+- `squirrel`
+- `duck`/`ducks`
 "#;
 
 #[command]
@@ -70,6 +73,26 @@ async fn dino(ctx: &Context, msg: &Message) -> CommandResult {
 #[command]
 async fn frog(ctx: &Context, msg: &Message) -> CommandResult {
     send_animal_msg(ctx, msg, Animal::Frog).await
+}
+
+#[command]
+async fn owl(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, Animal::Owl).await
+}
+
+#[command]
+async fn squirrel(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, Animal::Squirrel).await
+}
+
+#[command]
+async fn duck(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, Animal::Duck).await
+}
+
+#[command]
+async fn ducks(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, Animal::Ducks).await
 }
 
 #[command]
