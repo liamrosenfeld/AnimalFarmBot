@@ -2,6 +2,7 @@ use serenity::client::Context;
 use serenity::framework::standard::macros::command;
 use serenity::framework::standard::CommandResult;
 use serenity::model::channel::Message;
+use serenity::model::gateway::Activity;
 use serenity::model::id::ChannelId;
 
 #[command]
@@ -25,5 +26,19 @@ async fn send(ctx: &Context, msg: &Message) -> CommandResult {
         Ok(_) => msg.reply(ctx, "Message sent!").await?,
         Err(_) => msg.reply(ctx, "Message could not send").await?,
     };
+    Ok(())
+}
+
+#[command]
+#[owners_only]
+async fn status(ctx: &Context, msg: &Message) -> CommandResult {
+    // Get status from message
+    let status = match msg.content.find(" ") {
+        Some(first_space) => Some(Activity::playing(&msg.content[first_space..])),
+        None => None,
+    };
+
+    // Set status
+    ctx.shard.set_activity(status); // hopefully they eventually allow fully custom status
     Ok(())
 }
