@@ -1,33 +1,17 @@
-use reqwest::header::{ACCEPT, USER_AGENT};
 use serenity::client::Context;
 use serenity::framework::standard::macros::command;
 use serenity::framework::standard::CommandResult;
 use serenity::model::channel::Message;
 
-use crate::converter::animals::Animal;
-use crate::converter::build;
-
-const ANIMAL_LIST: &str = r#"
-Supported Animals:
-- `random`
-- `bunny`
-- `cow`
-- `tux`
-- `cat`
-- `dog`
-- `pig`
-- `hedgehog`
-- `dino`
-- `frog`
-- `owl`
-- `squirrel`
-- `duck`/`ducks`
-"#;
+use crate::generator::animals::Animal;
+use crate::generator::build;
+use crate::generator::pun::get_pun;
+use crate::slash::handle;
 
 #[command]
 async fn animals(ctx: &Context, msg: &Message) -> CommandResult {
     msg.channel_id
-        .send_message(ctx, |m| m.content(ANIMAL_LIST))
+        .send_message(ctx, |m| m.content(handle::animals()))
         .await?;
     Ok(())
 }
@@ -123,34 +107,4 @@ async fn send_animal_msg(ctx: &Context, msg: &Message, animal: Animal) -> Comman
         .send_message(ctx, |m| m.content(animal))
         .await?;
     Ok(())
-}
-
-async fn get_pun() -> String {
-    // Create Header
-    let mut header = reqwest::header::HeaderMap::new();
-    header.insert(ACCEPT, "text/plain".parse().unwrap());
-    header.insert(
-        USER_AGENT,
-        "Animal Farm Discord Bot (https://github.com/liamrosenfeld/AnimalFarmBot)"
-            .parse()
-            .unwrap(),
-    );
-
-    // Send Request
-    let client = reqwest::Client::new();
-    let response = client
-        .get("https://icanhasdadjoke.com")
-        .headers(header)
-        .send()
-        .await;
-
-    // Decode response
-    let pun = match response {
-        Ok(resp) => resp.text().await,
-        Err(err) => Err(err),
-    };
-    match pun {
-        Ok(pun) => pun,
-        Err(_) => "...".to_string(),
-    }
 }

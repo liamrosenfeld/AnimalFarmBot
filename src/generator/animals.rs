@@ -18,6 +18,25 @@ pub enum Animal {
 }
 
 impl Animal {
+    pub fn from_name(str: &str) -> Self {
+        match str {
+            "bunny" => Animal::Bunny,
+            "cow" => Animal::Cow,
+            "tux" => Animal::Tux,
+            "cat" => Animal::Cat,
+            "dog" => Animal::Dog,
+            "pig" => Animal::Pig,
+            "hedgehog" => Animal::Hedgehog,
+            "dino" => Animal::Dino,
+            "frog" => Animal::Frog,
+            "owl" => Animal::Owl,
+            "squirrel" => Animal::Squirrel,
+            "duck" => Animal::Duck,
+            "ducks" => Animal::Ducks,
+            _ => Animal::Bunny,
+        }
+    }
+
     pub fn art(&self) -> &str {
         match *self {
             Animal::Bunny => BUNNY,
@@ -35,6 +54,11 @@ impl Animal {
             Animal::Ducks => DUCKS,
         }
     }
+
+    pub const ANIMALS: [&'static str; 14] = [
+        "random", "bunny", "cow", "tux", "cat", "dog", "pig", "hedgehog", "dino", "frog", "owl",
+        "squirrel", "duck", "ducks",
+    ];
 }
 
 impl Distribution<Animal> for Standard {
