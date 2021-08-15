@@ -18,7 +18,7 @@ use events::Handler;
 #[group]
 #[commands(
     ping, add, feedback, info, help, send, status, animals, bunny, cow, tux, cat, dog, pig,
-    hedgehog, dino, frog, owl, squirrel, duck, ducks, random
+    hedgehog, dino, frog, owl, squirrel, duck, ducks, raccoon, random
 )]
 struct General;
 

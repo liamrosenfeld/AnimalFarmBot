@@ -82,6 +82,11 @@ async fn ducks(ctx: &Context, msg: &Message) -> CommandResult {
 }
 
 #[command]
+async fn raccoon(ctx: &Context, msg: &Message) -> CommandResult {
+    send_animal_msg(ctx, msg, Animal::Raccoon).await
+}
+
+#[command]
 async fn random(ctx: &Context, msg: &Message) -> CommandResult {
     send_animal_msg(ctx, msg, rand::random()).await
 }

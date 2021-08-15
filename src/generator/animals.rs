@@ -15,6 +15,7 @@ pub enum Animal {
     Squirrel,
     Duck,
     Ducks,
+    Raccoon,
 }
 
 impl Animal {
@@ -33,6 +34,7 @@ impl Animal {
             "squirrel" => Animal::Squirrel,
             "duck" => Animal::Duck,
             "ducks" => Animal::Ducks,
+            "raccoon" => Animal::Raccoon,
             "random" => random(),
             _ => Animal::Bunny,
         }
@@ -53,18 +55,19 @@ impl Animal {
             Animal::Squirrel => SQUIRREL,
             Animal::Duck => DUCK,
             Animal::Ducks => DUCKS,
+            Animal::Raccoon => RACCOON,
         }
     }
 
-    pub const ANIMALS: [&'static str; 14] = [
+    pub const ANIMALS: [&'static str; 15] = [
         "random", "bunny", "cow", "tux", "cat", "dog", "pig", "hedgehog", "dino", "frog", "owl",
-        "squirrel", "duck", "ducks",
+        "squirrel", "duck", "ducks", "raccoon",
     ];
 }
 
 impl Distribution<Animal> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Animal {
-        match rng.gen_range(0, 12) {
+        match rng.gen_range(0, 13) {
             0 => Animal::Bunny,
             1 => Animal::Cow,
             2 => Animal::Tux,
@@ -77,6 +80,7 @@ impl Distribution<Animal> for Standard {
             9 => Animal::Owl,
             10 => Animal::Squirrel,
             11 => Animal::Duck,
+            12 => Animal::Raccoon,
             _ => Animal::Bunny,
         }
     }
@@ -168,10 +172,10 @@ const SQUIRREL: &str = r#"
 "#;
 
 const DUCK: &str = r#"
- \  _
-  >(')____,
-   (` =~~/
- ^~^`---'~^~
+    \  _
+     >(')____,
+      (` =~~/
+    ^~^`---'~^~
 "#;
 
 const DUCKS: &str = r#"
@@ -179,4 +183,13 @@ const DUCKS: &str = r#"
   >(')____,  >(')____,  =(')____,
    (` =~~/    (` =~~/    (` =~~/
  ^~^`---'~^~^~^`---'~^~^~^`---'~^~^
+"#;
+
+const RACCOON: &str = r#"
+    \          ______    .-.
+     \  /\_/\-/.  '  \  /\\|
+      \ (O|O) ` ,`. . \/\\\/
+         \./  )____(  )\.-`
+          )/)/   )/ )/
+          " "    "´"´
 "#;
