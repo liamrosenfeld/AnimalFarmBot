@@ -1,5 +1,5 @@
 use rand::distributions::{Distribution, Standard};
-use rand::Rng;
+use rand::{Rng, random};
 
 pub enum Animal {
     Bunny,
@@ -33,6 +33,7 @@ impl Animal {
             "squirrel" => Animal::Squirrel,
             "duck" => Animal::Duck,
             "ducks" => Animal::Ducks,
+            "random" => random(),
             _ => Animal::Bunny,
         }
     }
