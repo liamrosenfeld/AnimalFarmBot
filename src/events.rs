@@ -7,16 +7,16 @@ use serenity::{
         gateway::Ready,
         guild::Guild,
         interactions::{
-            ApplicationCommand, ApplicationCommandPermissionType, Interaction, InteractionData,
-            InteractionResponseType,
+            application_command::{ApplicationCommand, ApplicationCommandPermissionType},
+            Interaction, InteractionResponseType,
         },
     },
     prelude::*,
 };
 use std::env;
 
-use crate::slash;
-use crate::slash::handle::welcome;
+use crate::commands;
+use crate::commands::handle::welcome;
 use serenity::model::guild::PartialGuild;
 
 pub struct Handler;
@@ -46,7 +46,7 @@ impl EventHandler for Handler {
         if let Ok(guild) = guild {
             // add private commands to admin guild
             let private_commands = guild
-                .create_application_commands(&ctx.http, slash::make_private_commands)
+                .set_application_commands(&ctx.http, commands::make_private_commands)
                 .await;
 
             // add owner permission to private commands
@@ -57,13 +57,13 @@ impl EventHandler for Handler {
         }
 
         // add public commands to bot
-        let public_commands = ApplicationCommand::create_global_application_commands(
+        let public_commands = ApplicationCommand::set_global_application_commands(
             &ctx.http,
-            slash::make_public_commands,
+            commands::make_public_commands,
         )
         .await;
         if let Err(err) = public_commands {
-            info!("Info creating commands {}", err);
+            info!("Error creating commands {}", err);
         }
 
         // log startup
@@ -75,21 +75,19 @@ impl EventHandler for Handler {
     }
 
     async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
-        if let Some(data) = interaction.data.as_ref() {
-            if let InteractionData::ApplicationCommand(command) = data {
-                let content = slash::handle_command(&ctx, command).await;
+        if let Interaction::ApplicationCommand(command) = interaction {
+            let content = commands::handle_command(&ctx, &command.data).await;
 
-                let response = interaction
-                    .create_interaction_response(&ctx.http, |response| {
-                        response
-                            .kind(InteractionResponseType::ChannelMessageWithSource)
-                            .interaction_response_data(|message| message.content(content))
-                    })
-                    .await;
+            let response = command
+                .create_interaction_response(&ctx.http, |response| {
+                    response
+                        .kind(InteractionResponseType::ChannelMessageWithSource)
+                        .interaction_response_data(|message| message.content(content))
+                })
+                .await;
 
-                if let Err(err) = response {
-                    println!("error in responding: {:#?}", err)
-                }
+            if let Err(err) = response {
+                println!("error in responding: {:#?}", err)
             }
         }
     }

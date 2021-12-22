@@ -1,5 +1,6 @@
 use serenity::{
-    builder::CreateApplicationCommand, model::interactions::ApplicationCommandOptionType,
+    builder::CreateApplicationCommand,
+    model::interactions::application_command::ApplicationCommandOptionType,
 };
 
 use crate::generator::animals::Animal;

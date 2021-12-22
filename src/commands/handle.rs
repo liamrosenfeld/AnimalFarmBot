@@ -3,7 +3,7 @@ use serenity::{
     model::{
         gateway::Activity,
         id::ChannelId,
-        interactions::{
+        interactions::application_command::{
             ApplicationCommandInteractionData, ApplicationCommandInteractionDataOptionValue,
         },
     },

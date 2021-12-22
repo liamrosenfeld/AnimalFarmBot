@@ -1,5 +1,5 @@
 use rand::distributions::{Distribution, Standard};
-use rand::{Rng, random};
+use rand::{random, Rng};
 
 pub enum Animal {
     Bunny,
@@ -67,7 +67,7 @@ impl Animal {
 
 impl Distribution<Animal> for Standard {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> Animal {
-        match rng.gen_range(0, 13) {
+        match rng.gen_range(0..=12) {
             0 => Animal::Bunny,
             1 => Animal::Cow,
             2 => Animal::Tux,
