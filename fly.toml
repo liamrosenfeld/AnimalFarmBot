@@ -1,0 +1,7 @@
+app = "animal-farm-bot"
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[experimental]
+auto_rollback = true
