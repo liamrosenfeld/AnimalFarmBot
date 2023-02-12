@@ -3,9 +3,7 @@ use serenity::{
     model::{
         gateway::Activity,
         id::ChannelId,
-        interactions::application_command::{
-            ApplicationCommandInteractionData, ApplicationCommandInteractionDataOptionValue,
-        },
+        application::interaction::application_command::{CommandData, CommandDataOptionValue}
     },
 };
 use std::env;
@@ -14,7 +12,7 @@ use crate::generator::animals::Animal;
 use crate::generator::build;
 use crate::generator::pun::get_pun;
 
-pub async fn generate(command: &ApplicationCommandInteractionData) -> String {
+pub async fn generate(command: &CommandData) -> String {
     // get animal
     let animal_option = command
         .options
@@ -23,7 +21,7 @@ pub async fn generate(command: &ApplicationCommandInteractionData) -> String {
         .resolved
         .as_ref();
     let animal = match animal_option {
-        Some(ApplicationCommandInteractionDataOptionValue::String(animal_name)) => {
+        Some(CommandDataOptionValue::String(animal_name)) => {
             Animal::from_name(&animal_name)
         }
         _ => rand::random(),
@@ -36,7 +34,7 @@ pub async fn generate(command: &ApplicationCommandInteractionData) -> String {
         .and_then(|option| option.resolved.as_ref());
     let pun;
     let split_msg = match msg_option {
-        Some(ApplicationCommandInteractionDataOptionValue::String(message)) => {
+        Some(CommandDataOptionValue::String(message)) => {
             message.split_whitespace().collect()
         }
         _ => {
@@ -60,7 +58,7 @@ pub fn animals() -> String {
 
 pub fn add() -> String {
     let app_id = env::var("APPLICATION_ID").expect("Expected an application id in the environment");
-    let link = format!("https://discord.com/api/oauth2/authorize?client_id={}&permissions=2048&scope=bot%20applications.commands", app_id);
+    let link = format!("https://discord.com/api/oauth2/authorize?client_id={app_id}&permissions=2147485696&scope=bot");
     let art = build(
         "Add Me To Your Own Server Here:"
             .split_whitespace()
@@ -90,7 +88,7 @@ pub fn info() -> String {
     format!("```\n{}```\n{}", art, link)
 }
 
-pub async fn send(ctx: &Context, command: &ApplicationCommandInteractionData) -> String {
+pub async fn send(ctx: &Context, command: &CommandData) -> String {
     // get channel
     let channel_option = command
         .options
@@ -99,7 +97,7 @@ pub async fn send(ctx: &Context, command: &ApplicationCommandInteractionData) ->
         .resolved
         .as_ref();
     let channel_id: u64 = match channel_option {
-        Some(ApplicationCommandInteractionDataOptionValue::String(id)) => match id.parse() {
+        Some(CommandDataOptionValue::String(id)) => match id.parse() {
             Ok(id) => id,
             Err(_) => return "Not valid channel id".to_string(),
         },
@@ -114,7 +112,7 @@ pub async fn send(ctx: &Context, command: &ApplicationCommandInteractionData) ->
         .resolved
         .as_ref();
     let msg = match msg_option {
-        Some(ApplicationCommandInteractionDataOptionValue::String(msg)) => msg,
+        Some(CommandDataOptionValue::String(msg)) => msg,
         _ => return "Message not provided".to_string(),
     };
 
@@ -126,7 +124,7 @@ pub async fn send(ctx: &Context, command: &ApplicationCommandInteractionData) ->
     }
 }
 
-pub fn status(ctx: &Context, command: &ApplicationCommandInteractionData) -> String {
+pub fn status(ctx: &Context, command: &CommandData) -> String {
     // get message
     let msg_option = command
         .options
@@ -135,7 +133,7 @@ pub fn status(ctx: &Context, command: &ApplicationCommandInteractionData) -> Str
         .resolved
         .as_ref();
     let msg = match msg_option {
-        Some(ApplicationCommandInteractionDataOptionValue::String(msg)) => msg,
+        Some(CommandDataOptionValue::String(msg)) => msg,
         _ => return "Message not provided".to_string(),
     };
 

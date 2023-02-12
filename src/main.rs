@@ -22,7 +22,7 @@ async fn main() {
         .expect("application id is not a valid id");
 
     // Create client
-    let mut client = Client::builder(token)
+    let mut client = Client::builder(token, GatewayIntents::empty())
         .event_handler(Handler)
         .application_id(application_id)
         .await

@@ -6,9 +6,9 @@ use serenity::{
         event::ResumedEvent,
         gateway::Ready,
         guild::Guild,
-        interactions::{
-            application_command::{ApplicationCommand, ApplicationCommandPermissionType},
-            Interaction, InteractionResponseType,
+        application::{
+            interaction::{Interaction, InteractionResponseType},
+            command::{Command, CommandPermissionType}
         },
     },
     prelude::*,
@@ -57,7 +57,7 @@ impl EventHandler for Handler {
         }
 
         // add public commands to bot
-        let public_commands = ApplicationCommand::set_global_application_commands(
+        let public_commands = Command::set_global_application_commands(
             &ctx.http,
             commands::make_public_commands,
         )
@@ -93,7 +93,7 @@ impl EventHandler for Handler {
     }
 }
 
-async fn limit_to_owner(commands: Vec<ApplicationCommand>, guild: PartialGuild, http: &Http) {
+async fn limit_to_owner(commands: Vec<Command>, guild: PartialGuild, http: &Http) {
     // get owner
     let owner_id = match http.get_current_application_info().await {
         Ok(info) => info.owner.id,
@@ -106,7 +106,7 @@ async fn limit_to_owner(commands: Vec<ApplicationCommand>, guild: PartialGuild, 
                 permissions.create_permission(|permission| {
                     permission
                         .id(*owner_id.as_u64())
-                        .kind(ApplicationCommandPermissionType::User)
+                        .kind(CommandPermissionType::User)
                         .permission(true)
                 })
             })
